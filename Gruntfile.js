@@ -426,7 +426,6 @@ module.exports = function (grunt) {
                     insertRequire: ['main'],
                     out: '<%= config.dist %>/scripts/main.js',
                     wrap: true,
-                    preserveLicenseComments: false,
                     paths: {
                         jquery: '../../bower_components/jquery/dist/jquery',
                         underscore: '../../bower_components/underscore/underscore',
@@ -489,9 +488,9 @@ module.exports = function (grunt) {
         'modernizr',
         'rev',
         'usemin',
-        //'inline',
-        'htmlmin'
-        //'clean:inline'
+        'inline',
+        'htmlmin',
+        'clean:inline'
     ]);
 
     grunt.registerTask('default', [
