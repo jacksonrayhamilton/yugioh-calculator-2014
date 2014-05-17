@@ -21,6 +21,14 @@ module.exports = function (grunt) {
         dist: 'dist'
     };
 
+    // Gets a pattern to match the html comment
+    // <!-- replace:name --> ... <!-- endreplace -->.
+    var getStringReplacePattern = function (name) {
+        return new RegExp('<!--\\s*?replace' +
+                          (typeof name === 'string' ? ':' + name : '') +
+                          '\\s*?-->[\\s\\S]*?<!--\\s*?endreplace\\s*?-->', 'g');
+    };
+
     // Define the configuration for all the tasks
     grunt.initConfig({
 
@@ -234,7 +242,7 @@ module.exports = function (grunt) {
             options: {
                 dest: '<%= config.dist %>'
             },
-            html: '<%= config.app %>/index.html'
+            html: '<%= config.dist %>/index.html'
         },
 
         // Performs rewrites based on rev and the useminPrepare configuration
@@ -305,7 +313,7 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         'images/{,*/}*.webp',
-                        '{,*/}*.html',
+                        //'{,*/}*.html', // TODO: Only exclude index.html, copy the rest.
                         'fonts/{,*/}*.*'
                     ]
                 }]
@@ -359,11 +367,27 @@ module.exports = function (grunt) {
                     tag: ''
                 },
                 src: [
-                    'dist/index.html'
+                    '<%= config.dist %>/index.html'
                 ],
                 dest: [
-                    'dist/'
+                    '<%= config.dist %>/'
                 ]
+            }
+        },
+
+        'string-replace': {
+            dist: {
+                files: {
+                    '<%= config.dist %>/index.html': '<%= config.app %>/index.html'
+                },
+                options: {
+                    replacements: [
+                        {
+                            pattern: getStringReplacePattern('requirejs'),
+                            replacement: '<!-- build:js scripts/main.js --><script src="scripts/main.js"><!-- endbuild -->'
+                        }
+                    ]
+                }
             }
         }
     });
@@ -405,6 +429,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'string-replace:dist',
         'useminPrepare',
         'concurrent:dist',
         'autoprefixer',
