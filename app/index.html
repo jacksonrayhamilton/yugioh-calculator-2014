@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Yugioh Calculator | Free, Online Web App for Android, iPhone, iPad, iOS, BlackBerry &amp; Windows Phone</title>
+        <meta name="description" content="A free Yugioh calculator app for iPhone, iPod, iPad, Android & Windows Phone. Records Life Points and a whole lot more!">
+        <meta name="apple-mobile-web-app-title" content="Yugioh Calc">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="canonical" href="http://www.yugiohcalculator.com/">
+        <link rel="shortcut icon" href="favicon.ico">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css">
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="../bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body>
+
+        <div id="playerOperationContainer">
+            <div class="clearfix" id="playerBoxes">
+            <div class="playerBox" id="player0">
+                <span class="lifePoints"></span>
+                <span class="playerName">You</span>
+                <span class="score"></span>
+                <span class="tapHint"></span>
+            </div>
+            <div class="playerBox" id="player1">
+                <span class="lifePoints"></span>
+                <span class="playerName">Opponent</span>
+                <span class="score"></span>
+                <span class="tapHint"></span>
+            </div>
+            </div>
+
+            <div id="operationBox">
+            <div id="operation"></div>
+            <div class="copyright">Yugioh Calculator v1.3 BETA<br>&copy; Jackson R. H. &amp; <a href="credits.txt">Co.</a></div>
+            <div class="valueHint">
+                Tap 2, 4 = 2400<br>
+                Tap 0, 8 =&nbsp;&nbsp;&nbsp;800
+            </div>
+            </div>
+        </div>
+
+        <table id="buttons">
+            <tr>
+            <td class="specialButton uiButtonCell" id="random">
+                <div class="uiButton">&nbsp;<div class="icon"></div></div>
+            </td>
+            <td class="specialButton uiButtonCell" id="reset">
+                <div class="uiButton">&nbsp;<div class="icon"></div></div>
+            </td>
+            <td class="digitButton uiButtonCell" id="digit7">
+                <div class="uiButton">7</div>
+            </td>
+            <td class="digitButton uiButtonCell" id="digit8">
+                <div class="uiButton">8</div>
+            </td>
+            <td class="digitButton uiButtonCell" id="digit9">
+                <div class="uiButton">9</div>
+            </td>
+            </tr>
+            <tr>
+            <td class="specialButton uiButtonCell" id="notes">
+                <div class="uiButton">&nbsp;<div class="icon"></div></div>
+            </td>
+            <td class="specialButton uiButtonCell" id="history">
+                <div class="uiButton">&nbsp;<div class="icon"></div></div>
+            </td>
+            <td class="digitButton uiButtonCell" id="digit4">
+                <div class="uiButton">4</div>
+            </td>
+            <td class="digitButton uiButtonCell" id="digit5">
+                <div class="uiButton">5</div>
+            </td>
+            <td class="digitButton uiButtonCell" id="digit6">
+                <div class="uiButton">6</div>
+            </td>
+            </tr>
+            <tr>
+            <td id="donate" colspan="2" rowspan="2">
+                <div class="wideButton" id="donateButton">
+                    &nbsp;<div id="donateIcon"></div></div>
+            </td>
+            <td class="digitButton uiButtonCell" id="digit1">
+                <div class="uiButton">1</div>
+            </td>
+            <td class="digitButton uiButtonCell" id="digit2">
+                <div class="uiButton">2</div>
+            </td>
+            <td class="digitButton uiButtonCell" id="digit3">
+                <div class="uiButton">3</div>
+            </td>
+            </tr>
+            <tr>
+            <td class="uiButtonCell" id="clear">
+                <div class="uiButton">C</div>
+            </td>
+            <td class="uiButtonCell" id="backspace">
+                <div class="uiButton">&nbsp;<div class="icon"></div></div>
+            </td>
+            <td class="digitButton uiButtonCell" id="digit0">
+                <div class="uiButton">0</div>
+            </td>
+            </tr>
+            <tr>
+            <td id="timer" colspan="2">
+                <div class="position-relative-hack">
+                    <div class="wideButton" id="timerButton">
+                        <span id="display"></span>
+                    </div>
+                    <div class="changeTurn" id="previousTurn"><div class="arrowIcon" id="previousTurnArrow"></div></div>
+                    <div class="changeTurn" id="nextTurn"><div class="arrowIcon" id="nextTurnArrow"></div></div>
+                </div>
+            </td>
+            <td colspan="3">
+                <div class="uiButtonCell" id="add">
+                    <div class="uiButton">+</div>
+                </div><div class="uiButtonCell" id="subtract">
+                    <div class="uiButton">&ndash;</div>
+                </div>
+            </td>
+            </tr>
+        </table>
+
+        <div id="window">
+            <div class="uiButtonCell" id="cancelButton"><div class="uiButton">X</div></div>
+
+            <div class="windowSubView" id="resetView">
+            <h1 class="windowTitle">Reset</h1>
+
+            <p class="windowText">Who won?</p>
+            <div class="specialButton uiButtonCell" id="player0Button"><div class="uiButton">Me</div></div>
+            <div class="specialButton uiButtonCell" id="player1Button"><div class="uiButton">Opponent</div></div>
+            <div class="specialButton uiButtonCell" id="drawButton"><div class="uiButton">Draw</div></div>
+
+            <p class="windowText">Or...</p>
+            <div class="specialButton uiButtonCell" id="newMatchButton"><div class="uiButton">New Match</div></div>
+
+            </div>
+
+            <div class="windowSubView" id="notesView">
+            <h1 class="windowTitle">Notes</h1>
+            <textarea id="notesTextarea"></textarea>
+            <div class="specialButton uiButtonCell" id="clearNotesButton"><div class="uiButton">Clear</div></div>
+            </div>
+
+            <div class="windowSubView" id="historyView">
+            <h1 class="windowTitle">History</h1>
+            <div id="historyTableContainer">
+                <table id="historyTable">
+                    <script type="text/template" id="historyItemTemplate">
+                        <tr class="<%= className %>">
+                        <td class="displayName"><%= displayName %></td>
+                        <td class="event"><%= event %></td>
+                        <td class="timestamp"><%= timestamp %></td>
+                        </tr>
+                    </script>
+                </table>
+            </div>
+            </div>
+
+            <div class="windowSubView" id="randomView">
+            <h1 class="windowTitle">Random</h1>
+            <table id="randomTable">
+                <tr>
+                    <td class="specialButton uiButtonCell" id="roll">
+                        <div class="uiButton">&nbsp;<div class="bigIcon"></div></div>
+                    </td>
+                    <td><div id="lastRoll"></div></td>
+                </tr>
+                <tr>
+                    <td class="specialButton uiButtonCell" id="flip">
+                        <div class="uiButton">&nbsp;<div class="bigIcon"></div></div>
+                    </td>
+                    <td><div id="lastFlip"></div></td>
+                </tr>
+            </table>
+            </div>
+
+            <div class="windowSubView" id="donateView">
+            <h1 class="windowTitle">Support</h1>
+            <p>
+                Yugioh Calculator is a free web app.<br>
+                If you like it, please support it!
+            </p>
+
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="QHWCQA5WCETXY">
+                <div class="specialButton uiButtonCell" id="donate2Button"><button class="uiButton" name="submit">Discard $2<span class="donateIcon" id="donate2Icon"></span></button></div>
+                <img class="paypalObject" alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="B9PUVPJNTVRT2">
+                <div class="specialButton uiButtonCell" id="donate5Button"><button class="uiButton" name="submit">Tribute $5<div class="donateIcon" id="donate5Icon"></div></button></div>
+                <img class="paypalObject" alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+            <small>(The buttons open PayPal in a new tab.)</small>
+            </div>
+
+        </div>
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/underscore/underscore.js"></script>
+        <script src="../bower_components/backbone/backbone.js"></script>
+        <script src="../bower_components/backbone.localStorage/backbone.localStorage.js"></script>
+        <script src="../bower_components/moment/moment.js"></script>
+        <script src="../bower_components/fastclick/lib/fastclick.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+
+        <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>
