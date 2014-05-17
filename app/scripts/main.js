@@ -1,5 +1,22 @@
-/*global $, _, Backbone, moment, FastClick*/
-$(function () {
+require.config({
+    paths: {
+        //templates: '../.tmp/scripts/templates',
+        jquery: '../bower_components/jquery/dist/jquery',
+        underscore: '../bower_components/underscore/underscore',
+        backbone: '../bower_components/backbone/backbone',
+        localstorage: '../bower_components/backbone.localStorage/backbone.localStorage',
+        moment: '../bower_components/moment/moment',
+        fastclick: '../bower_components/fastclick/lib/fastclick'
+    }
+});
+
+require([
+    'jquery',
+    'underscore',
+    'backbone',
+    'moment',
+    'fastclick'
+], function($, _, Backbone, moment, FastClick) {
 
     'use strict';
 
