@@ -1,6 +1,5 @@
 require.config({
     paths: {
-        //templates: '../.tmp/scripts/templates',
         jquery: '../bower_components/jquery/dist/jquery',
         underscore: '../bower_components/underscore/underscore',
         backbone: '../bower_components/backbone/backbone',
@@ -10,12 +9,7 @@ require.config({
     }
 });
 
-require([
-    'jquery',
-    'underscore',
-    'backbone',
-    'moment',
-    'fastclick'
+require(['jquery', 'underscore', 'backbone', 'moment', 'fastclick'
 ], function($, _, Backbone, moment, FastClick) {
 
     'use strict';

@@ -302,6 +302,32 @@ module.exports = function (grunt) {
             }
         },
 
+        // By default, your `index.html`'s <!-- Usemin block --> will take care of
+        // minification. These next options are pre-configured if you do not wish
+        // to use the Usemin blocks.
+        // cssmin: {
+        //     dist: {
+        //         files: {
+        //             '<%= config.dist %>/styles/main.css': [
+        //                 '.tmp/styles/{,*/}*.css',
+        //                 '<%= config.app %>/styles/{,*/}*.css'
+        //             ]
+        //         }
+        //     }
+        // },
+        // uglify: {
+        //     dist: {
+        //         files: {
+        //             '<%= config.dist %>/scripts/scripts.js': [
+        //                 '<%= config.dist %>/scripts/scripts.js'
+        //             ]
+        //         }
+        //     }
+        // },
+        // concat: {
+        //     dist: {}
+        // },
+
         // Copies remaining files to places other tasks can use
         copy: {
             dist: {
@@ -384,9 +410,31 @@ module.exports = function (grunt) {
                     replacements: [
                         {
                             pattern: getStringReplacePattern('requirejs'),
-                            replacement: '<!-- build:js scripts/main.js --><script src="scripts/main.js"><!-- endbuild -->'
+                            replacement: '<script src="scripts/main.js"></script>'
                         }
                     ]
+                }
+            }
+        },
+
+        requirejs: {
+            dist: {
+                options: {
+                    baseUrl: '<%= config.app %>/scripts',
+                    name: '../../bower_components/almond/almond',
+                    include: ['main'],
+                    insertRequire: ['main'],
+                    out: '<%= config.dist %>/scripts/main.js',
+                    wrap: true,
+                    preserveLicenseComments: false,
+                    paths: {
+                        jquery: '../../bower_components/jquery/dist/jquery',
+                        underscore: '../../bower_components/underscore/underscore',
+                        backbone: '../../bower_components/backbone/backbone',
+                        localstorage: '../../bower_components/backbone.localStorage/backbone.localStorage',
+                        moment: '../../bower_components/moment/moment',
+                        fastclick: '../../bower_components/fastclick/lib/fastclick'
+                    }
                 }
             }
         }
@@ -431,6 +479,7 @@ module.exports = function (grunt) {
         'clean:dist',
         'string-replace:dist',
         'useminPrepare',
+        'requirejs:dist',
         'concurrent:dist',
         'autoprefixer',
         'concat',
