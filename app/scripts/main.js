@@ -1,4 +1,7 @@
+/*global define*/
+
 require.config({
+    enforceDefine: true,
     paths: {
         jquery: '../bower_components/jquery/dist/jquery',
         underscore: '../bower_components/underscore/underscore',
@@ -9,7 +12,7 @@ require.config({
     }
 });
 
-require(['jquery', 'underscore', 'backbone', 'moment', 'fastclick'
+define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick'
 ], function($, _, Backbone, moment, FastClick) {
 
     'use strict';

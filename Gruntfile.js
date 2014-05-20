@@ -409,6 +409,9 @@ module.exports = function (grunt) {
                 options: {
                     replacements: [
                         {
+                            // Update the call to require.js with a call to
+                            // scripts/main, since usemin doesn't like requirejs
+                            // and we want to use the almond build anyway.
                             pattern: getStringReplacePattern('requirejs'),
                             replacement: '<script src="scripts/main.js"></script>'
                         }
@@ -427,6 +430,7 @@ module.exports = function (grunt) {
                     out: '<%= config.dist %>/scripts/main.js',
                     wrap: true,
                     paths: {
+                        // TODO: Find a way to avoid duplicating these paths.
                         jquery: '../../bower_components/jquery/dist/jquery',
                         underscore: '../../bower_components/underscore/underscore',
                         backbone: '../../bower_components/backbone/backbone',
