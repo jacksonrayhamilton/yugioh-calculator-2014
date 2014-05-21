@@ -41,6 +41,13 @@ Reference
 - Lookup Forbidden and Limited List
 - Rulings scraper
 
+Expression Evaluator
+- Click shift to enter expression mode
+- Plus and minus will simply be added to your expression at the end of the
+  string in which the cursor is currently positioned.
+- When you click shift again evaluate the expression and make it into your new
+  quantity.
+
 Toggle between interfaces with a button.
 
 Different themes.
@@ -48,7 +55,10 @@ Different themes.
 Design
 ======
 
+At certain width also start decreasing font size.
 
+Prefer to only change on height change, only if getting cramped should you
+change on width.
 
 Technical Stuff
 ===============

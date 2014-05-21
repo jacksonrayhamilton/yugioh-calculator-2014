@@ -1,0 +1,872 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #fff;
+}
+
+html {
+    height: 100%;
+    background-color: #001b33;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: none;
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+@import 'css3';
+
+/*
+ * Fonts
+ */
+
+@font-face {
+    font-family: 'Liquid Crystal';
+    src: url('../fonts/liquid-crystal-webfont.eot');
+    src: url('../fonts/liquid-crystal-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/liquid-crystal-webfont.woff') format('woff'),
+         url('../fonts/liquid-crystal-webfont.ttf') format('truetype'),
+         url('../fonts/liquid-crystal-webfont.svg#liquid_crystalXBdIt') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Droid Sans';
+    src: url('../fonts/droid-sans-webfont.eot');
+    src: url('../fonts/droid-sans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/droid-sans-webfont.woff') format('woff'),
+         url('../fonts/droid-sans-webfont.ttf') format('truetype'),
+         url('../fonts/droid-sans-webfont.svg#droid_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Droid Sans';
+    src: url('../fonts/droid-sans-bold-webfont.eot');
+    src: url('../fonts/droid-sans-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/droid-sans-bold-webfont.woff') format('woff'),
+         url('../fonts/droid-sans-bold-webfont.ttf') format('truetype'),
+         url('../fonts/droid-sans-bold-webfont.svg#droid_sansbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Droid Sans Mono';
+    src: url('../fonts/droid-sans-mono-webfont.eot');
+    src: url('../fonts/droid-sans-mono-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/droid-sans-mono-webfont.woff') format('woff'),
+         url('../fonts/droid-sans-mono-webfont.ttf') format('truetype'),
+         url('../fonts/droid-sans-mono-webfont.svg#droid_sans_monoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body,
+textarea {
+    font-family: 'Droid Sans', 'Arial', 'Helvetica', sans-serif;
+}
+
+#playerBoxes,
+#operation {
+    font-family: 'Droid Sans Mono', 'Courier New', monospace;
+}
+
+#timer {
+    font-family: 'Liquid Crystal', 'Courier New', monospace;
+}
+
+
+/*
+ * Icons
+ * Each icon uses a spriteset of icon images. Changing the background-position
+ * offset moves different icon images into view.
+ */
+
+.icon,
+.bigIcon,
+#donateIcon,
+.donateIcon {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+}
+
+$iconSize: 48px;
+.icon {
+    width: $iconSize;
+    height: $iconSize;
+    background-image: url('../images/icon-set-48.png');
+}
+
+$bigIconSize: 128px;
+.bigIcon {
+    width: $bigIconSize;
+    height: $bigIconSize;
+    background-image: url('../images/icon-set-128.png');
+}
+
+$arrowIconSize: 25px;
+.arrowIcon {
+    display: inline-block;
+    width: $arrowIconSize;
+    height: $arrowIconSize;
+    background-image: url('../images/red-arrow-25.png');
+}
+
+#donateButton {
+    position: relative;
+    width: 112px;
+    height: 112px;
+    overflow: hidden;
+    border: 1px solid #111;
+    font-size: 32px;
+    line-height: 112px;
+    background-color: #111;
+    box-shadow: inset 0px 0px 0px 1px rgba(253, 155, 0, .2), 0 1px 3px #333333;
+    &:active {
+        position: relative;
+        top: 1px;
+        box-shadow: inset 0px 0px 0px 1px rgba(238, 238, 238, .2);
+    }
+}
+
+#donateIcon {
+    width: 112px;
+    height: 112px;
+    background-image: url('../images/donate-112.jpg');
+}
+
+#donateView .uiButton {
+    position: relative;
+    width: 300px;
+    height: 64px
+}
+
+.donateIcon {
+    width: 300px;
+    height: 64px;
+}
+
+#donate2Button .uiButton {
+    padding-left: 15px;
+    text-align: left;
+}
+
+#donate5Button .uiButton {
+    padding-right: 15px;
+    text-align: right;
+}
+
+#donate2Icon {
+    background-image: url('../images/disky-banner-64.png');
+}
+
+#donate5Icon {
+    background-image: url('../images/rescue-banner-64.png');
+}
+
+
+/* Serve retina icons to devices with that pixel ratio */
+@media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (   min--moz-device-pixel-ratio: 2),
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 192dpi),
+    only screen and (                min-resolution: 2dppx) {
+
+    .icon {
+        background-image: url('../images/icon-set-96.png');
+        background-size: 96px auto;
+    }
+
+    .bigIcon {
+        background-image: url('../images/icon-set-256.png');
+        background-size: 256px auto;
+    }
+
+    .arrowIcon {
+        background-image: url('../images/red-arrow-50.png');
+        background-size: 50px auto;
+    }
+
+    #donateIcon {
+        background-image: url('../images/donate-224.jpg');
+        background-size: 112px auto;
+    }
+
+    #donate5Icon {
+        background-image: url('../images/disky-banner-128.png');
+        background-size: 300px auto;
+    }
+
+    #donate5Icon {
+        background-image: url('../images/rescue-banner-128.png');
+        background-size: 300px auto;
+    }
+}
+
+#ruling .icon { background-position: 0 0; }
+#reset .icon { background-position: $iconSize 0; }
+#notes .icon { background-position: 0 (-$iconSize); }
+#history .icon { background-position: $iconSize (-$iconSize); }
+#battle .icon { background-position: 0 (-$iconSize * 2); }
+#random .icon { background-position: $iconSize (-$iconSize * 2); }
+#halve .icon { background-position: 0 (-$iconSize * 3); }
+#backspace .icon { background-position: 0 (-$iconSize * 4); }
+#enter .icon { background-position: $iconSize (-$iconSize * 4); }
+
+#roll .bigIcon { background-position: 0 0; }
+#flip .bigIcon { background-position: $bigIconSize 0; }
+
+#previousTurn .arrowIcon { background-position: 0 0; }
+#nextTurn .arrowIcon { background-position: $arrowIconSize 0; }
+
+
+/*
+ * UI Buttons
+ */
+
+/*
+ * Each ui-button also requires
+ * - a background-color
+ * - a border -7 shades of the background-color (http://0to255.com/)
+*/
+
+.uiButton {
+    display: inline-block;
+    overflow: hidden;
+    text-shadow: 0px -1px 1px rgba(17, 17, 17, 0.8);
+    @include linear-gradient(top, rgba(238, 238, 238, .4) 0%, rgba(238, 238, 238, .1) 50%, rgba(17, 17, 17, .1) 50%, rgba(17, 17, 17, .4) 100%);
+    border-radius: 3px;
+    box-shadow: inset 0px 0px 0px 1px rgba(238, 238, 238, .2), 0 1px 3px #333333;
+    cursor: default;
+}
+
+/* In increasing the clickable area of buttons, a button's cell represents a
+   button's whole clickable area. The :hover and :active states respond to
+   action on the whole cell, but only apply styling to the buttons */
+.uiButtonCell {
+    &:hover .uiButton {
+        @include linear-gradient(top, rgba(238, 238, 238, .5) 0%, rgba(238, 238, 238, .2) 50%, rgba(17, 17, 17, 0) 50%, rgba(17, 17, 17, .3) 100%);
+    }
+    &:active .uiButton {
+        position: relative;
+        top: 1px;
+        @include linear-gradient(top, rgba(238, 238, 238, .3) 0%, rgba(238, 238, 238, 0) 50%, rgba(17, 17, 17, .2) 50%, rgba(17, 17, 17, .5) 100%);
+        box-shadow: inset 0px 0px 0px 1px rgba(238, 238, 238, .2);
+    }
+}
+
+#buttons .uiButton {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+}
+
+.digitButton .uiButton {
+    width: 56px !important;
+    border: 1px solid #1a1a1a;
+    background-color: #333;
+    border-radius: 15% 15% 40% 40%;
+}
+
+.specialButton .uiButton {
+    border: 1px solid #000;
+    background-color: #ccc;
+}
+
+#backspace .uiButton,
+#clear .uiButton,
+#cancelButton .uiButton {
+    border: 1px solid #aa002a;
+    background-color: #FF003F;
+}
+
+#subtract .uiButton,
+#add .uiButton {
+    border: 1px solid #00492c;
+    background-color: #009E60;
+}
+
+$cancelButtonDiameter: 60px;
+#cancelButton .uiButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: $cancelButtonDiameter;
+    height: $cancelButtonDiameter;
+    font-size: 48px;
+    line-height: $cancelButtonDiameter;
+    text-align: center;
+    border-radius: 100%;
+}
+
+
+/*
+ * html, body and window
+ */
+
+* {
+    @include box-sizing(border-box);
+    @include user-select(none);
+    /* Remove iOS translucent-black click-rectangles */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html {
+    /* Fix iOS rotation bug */
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    min-width: 320px;
+    overflow: hidden;
+    @include radial-gradient(circle, #588cb2 50%, #345771);
+}
+
+$calculatorHeight: 416px;
+body,
+.window {
+    min-height: $calculatorHeight;
+}
+
+
+/*
+ * Top area (LPs, score)
+ */
+
+#playerOperationContainer {
+    height: 96px;
+    border-bottom: 1px solid #1a1a1a;
+    color: #CEDAE3;
+    background-color: #333;
+    @include linear-gradient(top, #333, #222);
+    box-shadow: inset 0px -1px rgba(238, 238, 238, .2), 0 1px 3px #333;
+    border-radius: 0 0 5px 5px;
+}
+
+#playerBoxes {
+    width: 100%;
+}
+
+$lp-height: 64px;
+.playerBox {
+    float: left;
+    position: relative;
+    width: 50%;
+    height: $lp-height;
+    overflow: hidden;
+    font-size: 44px;
+    line-height: $lp-height;
+    text-align: center;
+}
+
+.selected {
+    color: #eee;
+    background-color: #36c;
+    @include linear-gradient(top, #36c, #2952a3);
+}
+
+#player0.selected {
+    border-radius: 0 0 5px 0;
+}
+
+#player1.selected {
+    border-radius: 0 0 0 5px;
+}
+
+.playerName,
+.score,
+.tapHint,
+.copyright,
+.valueHint {
+    position: absolute;
+    text-align: left;
+}
+
+.playerName,
+.score,
+.tapHint {
+    line-height: 1em;
+}
+
+.copyright,
+.valueHint {
+    line-height: 14px;
+}
+
+$x-offset: 4px;
+$y-offset: 2px;
+.playerName {
+    top: $y-offset;
+    left: $x-offset;
+    font-size: 12px;
+}
+
+.score {
+    bottom: $y-offset;
+    left: $x-offset;
+    font-size: 14px;
+}
+
+.tapHint {
+    right: $x-offset;
+    bottom: $y-offset;
+    font-size: 12px;
+}
+
+.copyright {
+    top: $y-offset;
+    left: $x-offset;
+    font-size: 10px;
+    a {
+        color: #61a6f9;
+    }
+}
+
+.valueHint {
+    top: $y-offset;
+    right: $x-offset;
+    font-size: 10px;
+}
+
+$operation-box-height: 32px;
+#operationBox {
+    position: relative;
+    width: 100%;
+    height: $operation-box-height;
+    line-height: $operation-box-height;
+    text-align: center;
+}
+
+#operation,
+.digitInput {
+    display: inline-block;
+    font-size: 32px;
+    .selected {
+        display: inline-block;
+        border-radius: 3px 3px 0 0;
+    }
+}
+
+
+/*
+ * Middle/lower area (buttons)
+ * (sans uiButton/uiButtonCell styling) (see earlier in the stylesheet)
+ */
+
+$button-height: 64px;
+#buttons {
+    width: 100%;
+    table-layout: fixed;
+    white-space: nowrap;
+    td {
+        width: 20%;
+        height: $button-height;
+        padding: 0;
+        font-size: 46px;
+        text-align: center;
+        vertical-align: middle;
+    }
+}
+
+.specialButton,
+#add,
+#subtract {
+    color: #222;
+}
+
+#add,
+#subtract {
+    display: inline-block;
+    width: 50%;
+}
+
+#add .uiButton,
+#subtract .uiButton {
+    width: 75%;
+}
+
+.digitButton {
+    color: #ddd;
+}
+
+.mathButton {
+    color: #ccc;
+}
+
+.wideButton {
+    display: inline-block;
+    width: 112px;
+    border-radius: 3px;
+}
+
+#timer {
+    position: relative;
+    color: #f12938;
+    text-shadow: 0 0 3px #f12938;
+}
+
+/* Hack for Firefox and IE to make absolutely-positioned elements inside
+ * position-relative tables be positioned relative to said tables. */
+.position-relative-hack {
+    position: relative;
+}
+
+#timerButton {
+    height: 48px;
+    border: 1px solid #111;
+    font-size: 44px;
+    line-height: 48px;
+    text-align: center;
+    background-color: #111;
+    box-shadow: inset 0px 0px 0px 1px rgba(241, 41, 56, .2), 0 1px 3px #333333;
+}
+
+.changeTurn {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: $button-height;
+}
+
+$arrowPadding: 25px;
+#previousTurn {
+    padding-right: $arrowPadding;
+    text-align: right;
+}
+
+#nextTurn {
+    right: 0;
+    padding-left: $arrowPadding;
+    text-align: left;
+}
+
+#clear {
+    color: #222;
+    font-weight: bold;
+}
+
+
+/*
+ * The pop-up window / its subviews
+ */
+
+#window {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .9);
+}
+
+$subViewMargin: $cancelButtonDiameter + 10;
+$subViewHeight: $calculatorHeight - $subViewMargin - 10;
+.windowSubView {
+    display: none;
+    padding-top: $subViewMargin;
+    height: $subViewHeight;
+}
+
+.windowTitle {
+    position: fixed;
+    top: 10px;
+    left: 15px;
+    margin: 0;
+    font-size: 42px;
+}
+
+.windowText {
+    margin: 5px 0;
+}
+
+#resetView,
+#notesView {
+    font-size: 32px;
+    .uiButton {
+        width: 200px;
+    }
+}
+
+#resetView,
+#notesView,
+#donateView {
+    .uiButton {
+        margin: 5px;
+        font-size: 32px;
+    }
+}
+
+#donateView {
+    .uiButton {
+        width: 300px;
+        height: 64px;
+    }
+    button {
+        color: #222;
+    }
+}
+
+.paypalObject {
+    position: absolute;
+}
+
+#notesTextarea {
+    width: 100%;
+    height: $subViewHeight - 50px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 10px;
+    font-size: 30px;
+    line-height: 40px;
+    color: #222;
+    background: #fff url('../images/line.png') repeat;
+    background-attachment: local;
+    @include user-select(text);
+}
+
+#historyView {
+    font-size: 16px;
+}
+
+#historyTableContainer {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    height: 335px;
+}
+
+#historyTable {
+    width: 100%;
+    table-layout: fixed;
+
+    .playernull {
+        color: #222;
+        &:nth-child(odd) {
+            background-color: #999;
+        }
+        &:nth-child(even) {
+            background-color: #bbb;
+        }
+    }
+
+    .player0 {
+        color: #7c0037;
+        &:nth-child(odd) {
+            background-color: #ff6bad;
+        }
+        &:nth-child(even) {
+            background-color: #ff9ec9;
+        }
+    }
+
+    .player1 {
+        color: #002b67;
+        &:nth-child(odd) {
+            background-color: #569cff;
+        }
+        &:nth-child(even) {
+            background-color: #89baff;
+        }
+    }
+
+    td {
+        padding: 1px 5px;
+        vertical-align: middle;
+        &.displayName {
+            width: 25%;
+            text-align: right;
+        }
+        &.event {
+            width: 40%;
+            text-align: center;
+        }
+        &.timestamp {
+            width: 35%;
+            text-align: left;
+        }
+    }
+}
+
+#randomView .uiButton {
+    position: relative;
+    width: $bigIconSize;
+    height: $bigIconSize;
+}
+
+#randomTable {
+    margin: 0 auto;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 10px;
+}
+
+/* CSS3 Shake animation for changing rolls/flips */
+@-webkit-keyframes spaceboots {
+    0% { -webkit-transform: translate(4px, 2px) rotate(0deg); }
+    10% { -webkit-transform: translate(-2px, -4px) rotate(-1deg); }
+    20% { -webkit-transform: translate(-6px, 0px) rotate(1deg); }
+    30% { -webkit-transform: translate(0px, 4px) rotate(0deg); }
+    40% { -webkit-transform: translate(2px, -2px) rotate(1deg); }
+    50% { -webkit-transform: translate(-2px, 4px) rotate(-1deg); }
+    60% { -webkit-transform: translate(-6px, 2px) rotate(0deg); }
+    70% { -webkit-transform: translate(4px, 2px) rotate(-1deg); }
+    80% { -webkit-transform: translate(-2px, -2px) rotate(1deg); }
+    90% { -webkit-transform: translate(4px, 4px) rotate(0deg); }
+    100% { -webkit-transform: translate(2px, -4px) rotate(-1deg); }
+}
+
+.shake {
+    -webkit-animation-name: spaceboots;
+    -webkit-animation-duration: 0.8s;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+#lastRoll,
+#lastFlip {
+    width: $bigIconSize;
+    height: $bigIconSize;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0);
+    line-height: $bigIconSize - 10;
+}
+
+#lastRoll {
+    font-size: 96px;
+    border-radius: 25px;
+}
+
+#lastFlip {
+    font-size: 42px;
+    border-radius: 100%;
+}
+
+#credits {
+    overflow-y: scroll;
+}
+
+#creditsTop {
+    text-align: center;
+    h1 {
+        margin: 0;
+    }
+}
+
+#credits ul {
+    padding: 0 30px 15px 30px;
+}
+
+#credits a {
+    color: #61a6f9;
+}

@@ -11,10 +11,12 @@
         <link rel="shortcut icon" href="favicon.ico">
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
-        <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css">
+        <link rel="stylesheet" href="../bower_components/pure/pure.css" />
         <!-- endbower -->
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="styles/vertical-center.css">
+        <link rel="stylesheet" href="styles/fonts.css">
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
@@ -23,7 +25,169 @@
     </head>
     <body>
 
-        <div id="playerOperationContainer">
+        <div class="yc-calculator-container">
+
+            <div class="pure-g yc-standard-row yc-monospace-font yc-lcd">
+                <div class="pure-u-1-2 yc-cell">
+                    <div class="vc-outer yc-quantity">
+                        <div class="vc-inner">8000</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-2 yc-cell">
+                    <div class="vc-outer yc-quantity">
+                        <div class="vc-inner">8000</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g yc-operation-row yc-monospace yc-lcd">
+                <div class="pure-u-1-1 yc-cell">
+                    <div class="vc-outer yc-quantity">
+                        <div class="vc-inner">2400</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g yc-standard-row">
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-special-button">
+                        <div class="vc-inner yc-command">f</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-special-button">
+                        <div class="vc-inner yc-command">m</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button">
+                        <div class="vc-inner">7</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button">
+                        <div class="vc-inner">8</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button">
+                        <div class="vc-inner">9</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g yc-standard-row">
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-special-button">
+                        <div class="vc-inner yc-command">e</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-special-button">
+                        <div class="vc-inner yc-command">g</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button">
+                        <div class="vc-inner">4</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button">
+                        <div class="vc-inner">5</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button">
+                        <div class="vc-inner">6</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g yc-standard-row">
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-special-button">
+                        <div class="vc-inner yc-command">j</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-special-button">
+                        <div class="vc-inner yc-command">p</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button">
+                        <div class="vc-inner">1</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button">
+                        <div class="vc-inner">2</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button">
+                        <div class="vc-inner">3</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g yc-standard-row">
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-special-button">
+                        <div class="vc-inner yc-command">k</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-special-button">
+                        <div class="vc-inner yc-command">a</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-cancel-button yc-removal-button">
+                        <div class="vc-inner">C</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-removal-button">
+                        <div class="vc-inner yc-command">b</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button">
+                        <div class="vc-inner">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pure-g yc-standard-row yc-timer-font">
+                <div class="pure-u-2-5 yc-cell">
+                    <div class="vc-outer yc-timer">
+                        <div class="vc-inner">40:00</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-special-button">
+                        <div class="vc-inner yc-command">n</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-operator-button">
+                        <div class="vc-inner yc-command">c</div>
+                    </div>
+                </div>
+                <div class="pure-u-1-5 yc-cell">
+                    <div class="vc-outer yc-button yc-operator-button">
+                        <div class="vc-inner yc-command">d</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <!--<div id="playerOperationContainer">
             <div class="clearfix" id="playerBoxes">
             <div class="playerBox" id="player0">
                 <span class="lifePoints"></span>
@@ -208,7 +372,7 @@
             <small>(The buttons open PayPal in a new tab.)</small>
             </div>
 
-        </div>
+        </div>-->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

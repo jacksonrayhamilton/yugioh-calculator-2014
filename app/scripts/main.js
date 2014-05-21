@@ -1,18 +1,24 @@
 /*global define*/
 
 require.config({
-    enforceDefine: true,
     paths: {
         jquery: '../bower_components/jquery/dist/jquery',
+        fittext: '../bower_components/FitText.js/jquery.fittext',
         underscore: '../bower_components/underscore/underscore',
         backbone: '../bower_components/backbone/backbone',
         localstorage: '../bower_components/backbone.localStorage/backbone.localStorage',
         moment: '../bower_components/moment/moment',
-        fastclick: '../bower_components/fastclick/lib/fastclick'
+        fastclick: '../bower_components/fastclick/lib/fastclick',
+        domready: '../bower_components/requirejs-domready/domReady'
+    },
+    shim: {
+        fittext: {
+            deps: [ 'jquery' ]
+        }
     }
 });
 
-define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick'
+define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick', 'hacks', 'domready!'
 ], function($, _, Backbone, moment, FastClick) {
 
     'use strict';

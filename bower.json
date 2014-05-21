@@ -1,18 +1,20 @@
 {
-    "name": "yugiohcalculator",
-    "private": true,
-    "dependencies": {
-        "modernizr": "~2.8.1",
-        "jquery": "~2.1.1",
-        "fastclick": "~1.0.1",
-        "backbone": "~1.1.2",
-        "backbone.localStorage": "~1.1.7",
-        "underscore": "~1.6.0",
-        "requirejs": "~2.1.11",
-        "requirejs-text": "~2.0.12",
-        "moment": "~2.6.0",
-        "normalize-css": "~3.0.1",
-        "almond": "~0.2.9"
-    },
-    "devDependencies": {}
+  "name": "yugiohcalculator",
+  "private": true,
+  "dependencies": {
+    "modernizr": "~2.8.1",
+    "jquery": "~2.1.1",
+    "fastclick": "~1.0.1",
+    "backbone": "~1.1.2",
+    "backbone.localStorage": "~1.1.7",
+    "underscore": "~1.6.0",
+    "requirejs": "~2.1.11",
+    "requirejs-text": "~2.0.12",
+    "moment": "~2.6.0",
+    "almond": "~0.2.9",
+    "pure": "~0.4.2",
+    "FitText.js": "jacksonrayhamilton/FitText.js",
+    "requirejs-domready": "~2.0.1"
+  },
+  "devDependencies": {}
 }

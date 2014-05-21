@@ -1,0 +1,2 @@
+Copyright Dave Gandy.
+http://opensource.org/licenses/mit-license.html

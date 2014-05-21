@@ -1,0 +1,94 @@
+@import 'font-face';
+
+@charset 'UTF-8';
+
+@font-face {
+    @include font-face('Liquid Crystal', 'liquid-crystal-webfont', 'liquid_crystalXBdIt', normal, normal);
+}
+
+@font-face {
+    @include font-face('Droid Sans', 'droid-sans-webfont', 'droid_sansregular', normal, normal);
+}
+
+@font-face {
+    @include font-face('Droid Sans', 'droid-sans-bold-webfont', 'droid_sansbold', bold, normal);
+}
+
+@font-face {
+    @include font-face('Droid Sans Mono', 'droid-sans-mono-webfont', 'droid_sans_monoregular', normal, normal);
+}
+
+@font-face {
+    @include font-face('Commands', 'commands', 'commands', normal, normal);
+}
+
+[data-icon]:before {
+    content: attr(data-icon);
+}
+
+[data-icon]:before,
+[class^='commands-']:before,
+[class*=' commands-']:before {
+  font-family: 'Commands' !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  //line-height: 1;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.commands-fa-undo:before {
+  content: "a";
+}
+.commands-fa-arrow-left:before {
+  content: "b";
+}
+.commands-fa-plus:before {
+  content: "c";
+}
+.commands-fa-minus:before {
+  content: "d";
+}
+.commands-fa-pencil:before {
+  content: "e";
+}
+.commands-fa-clock:before {
+  content: "f";
+}
+.commands-fa-book:before {
+  content: "g";
+}
+.commands-fa-question-mark:before {
+  content: "h";
+}
+.commands-fa-dollar-sign:before {
+  content: "i";
+}
+.commands-fa-double-quote:before {
+  content: "j";
+}
+.commands-fa-ellipsis:before {
+  content: "k";
+}
+.commands-fa-info:before {
+  content: "l";
+}
+.commands-fa-reset:before {
+  content: "m";
+}
+.commands-fa-terminal:before {
+  content: "n";
+}
+.commands-fa-magnifier:before {
+  content: "o";
+}
+.commands-yc-dice:before {
+  content: "p";
+}
+.commands-yc-coin:before {
+  content: "q";
+}
