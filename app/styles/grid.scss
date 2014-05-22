@@ -1,0 +1,26 @@
+.grid-g {
+    width: 100%;
+}
+
+.grid-u-1-1,
+.grid-u-1-2,
+.grid-u-1-5,
+.grid-u-2-5 {
+    display: inline-block;
+}
+
+.grid-u-1-1 {
+    width: 100%;
+}
+
+.grid-u-1-2 {
+    width: 50%;
+}
+
+.grid-u-1-5 {
+    width: 20%;
+}
+
+.grid-u-2-5 {
+    width: 40%;
+}

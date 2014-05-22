@@ -13,15 +13,15 @@ require.config({
     },
     shim: {
         fittext: {
-            deps: [ 'jquery' ]
+            deps: [ 'jquery', 'underscore' ]
         }
     }
 });
 
-define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick', 'hacks', 'domready!'
+define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick', 'hacks'
 ], function($, _, Backbone, moment, FastClick) {
-
-    'use strict';
+'use strict';
+$(function () {
 
     /**
      * Offers some utility methods to Models.
@@ -997,4 +997,6 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick', 'hacks', 'dom
 
     // Remove the 300ms delay on mobile devices
     FastClick.attach(document.body);
+
+});
 });
