@@ -53,10 +53,6 @@ html, button, input, select, textarea,
     height: 10%;
 }
 
-.yc-button {
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.075) 50%, rgba(0, 0, 0, 0) 60%);
-}
-
 .yc-operator-button {
     background-color: #6d5b51 !important;
 }
@@ -67,6 +63,15 @@ html, button, input, select, textarea,
 
 .yc-special-button {
     background-color: #626669 !important;
+}
+
+// All of these containers should fill their vertical space so that they will
+// look like buttons.
+.yc-button,
+.yc-life-points,
+.yc-operand,
+.yc-timer {
+    height: 100%;
 }
 
 .yc-timer,
@@ -86,15 +91,27 @@ html, button, input, select, textarea,
 }
 
 .yc-button {
+    border: 1px solid rgba(0, 0, 0, .05);
     color: #ddd;
     text-shadow: 0px -2px 0px rgba(0, 0, 0, .5);
     background-color: #000000;
-    border: 1px solid rgba(0, 0, 0, .05);
+    background-image: linear-gradient(to bottom,
+                                      rgba(255, 255, 255, 0.075) 45%,
+                                      rgba(0, 0, 0, 0) 55%);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
-.yc-command {
-    font-family: 'Commands';
+.yc-glyph {
+    font-family: 'Glyphs';
+}
+
+.yc-glyph {
+    * [class^='icon-']:before,
+    * [class*=' icon-']:before {
+        display: block;
+        height: 100%;
+        line-height: default;
+    }
 }
 
 .yc-cancel-button {
