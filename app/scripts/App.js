@@ -12,14 +12,14 @@ function($, _, Backbone, moment, FastClick,
         initialize: function () {
 
             var player0 = new Player({
-                playerId: 0,
-                id: 'player0', // TODO: Remove these?
+                playerId: 0, // TODO: Remove these?
+                id: 'player-0',
                 selected: true
             });
 
             var player1 = new Player({
                 playerId: 1,
-                id: 'player1'
+                id: 'player-1'
             });
 
             new PlayerView({
@@ -43,7 +43,9 @@ function($, _, Backbone, moment, FastClick,
                 el: '#yc-operand'
             });
 
-            var timer = new Timer();
+            var timer = new Timer({
+                id: 'timer'
+            });
 
             new TimerView({
                 model: timer,

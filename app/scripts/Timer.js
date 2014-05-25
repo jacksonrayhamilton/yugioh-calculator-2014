@@ -1,5 +1,5 @@
-define(['backbone', 'underscore'],
-function (Backbone, _) {
+define(['./PersistentModel', 'underscore'],
+function (PersistentModel, _) {
 
     'use strict';
 
@@ -7,7 +7,7 @@ function (Backbone, _) {
      * Controls the matches' Timer, how and when it is rendered, reset, and
      * when overtime occurs and a match enters "turns."
      */
-    var Timer = Backbone.Model.extend({
+    var Timer = PersistentModel.extend({
 
         defaults: function() {
             return {
@@ -18,8 +18,8 @@ function (Backbone, _) {
         },
 
         initialize: function() {
-            //this.restore();
-            //this.on('change:startTime change:turn', this.persist);
+            this.restore();
+            this.on('change:startTime change:turn', this.persist);
             if (this.get('startTime') === undefined) {
                 this.restart();
             } else {

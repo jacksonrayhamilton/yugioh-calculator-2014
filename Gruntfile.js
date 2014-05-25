@@ -434,7 +434,6 @@ module.exports = function (grunt) {
                         fittext: '../../bower_components/FitText.js/jquery.fittext',
                         underscore: '../../bower_components/underscore/underscore',
                         backbone: '../../bower_components/backbone/backbone',
-                        localstorage: '../../bower_components/backbone.localStorage/backbone.localStorage',
                         moment: '../../bower_components/moment/moment',
                         fastclick: '../../bower_components/fastclick/lib/fastclick'
                     },

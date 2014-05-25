@@ -1,27 +1,23 @@
-define(['backbone'],
-function (Backbone) {
+define(['./PersistentModel'],
+function (PersistentModel) {
 
     'use strict';
 
-    var Player = Backbone.Model.extend({
+    var Player = PersistentModel.extend({
 
-        defaults: function() {
+        defaults: function () {
             return {
                 lifePoints: Player.INITIAL_LIFE_POINTS,
                 selected: false
             };
         },
 
-        gain: function(amount) {
-            this.set({
-                lifePoints: this.get('lifePoints') + amount
-            });
+        gain: function (amount) {
+            this.set('lifePoints', this.get('lifePoints') + amount);
         },
 
-        lose: function(amount) {
-            this.set({
-                lifePoints: this.get('lifePoints') - amount
-            });
+        lose: function (amount) {
+            this.set('lifePoints', this.get('lifePoints') - amount);
         },
 
         resetLifePoints: function() {
@@ -35,9 +31,7 @@ function (Backbone) {
         },
 
         select: function() {
-            this.set({
-                selected: true
-            });
+            this.set('selected', true);
         }
 
     }, {
