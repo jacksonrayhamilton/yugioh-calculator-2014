@@ -12,12 +12,16 @@ function ($, Backbone) {
         initialize: function (args) {
             this.players = args.players;
             this.operation = args.operation;
+            this.timer = args.timer;
         },
 
         events: {
             // 'click .specialButton': 'subViewButtonHandler',
             // 'click #donate': 'subViewButtonHandler',
-            'click .yc-reset': function () {
+            'click .yc-restart-timer': function () {
+                this.timer.restart();
+            },
+            'click .yc-reset-life-points': function () {
                 this.players.resetLifePoints();
             },
             'click .yc-digit': function (event) {

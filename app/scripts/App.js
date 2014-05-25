@@ -1,9 +1,9 @@
 define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick',
         './Player', './PlayerCollection', './PlayerView', './Operation', './OperationView',
-        './ButtonView', './fitText'],
+        './ButtonView', './Timer', './TimerView', './fitText'],
 function($, _, Backbone, moment, FastClick,
          Player, PlayerCollection, PlayerView, Operation, OperationView,
-         ButtonView, fitText) {
+         ButtonView, Timer, TimerView, fitText) {
 
     'use strict';
 
@@ -22,8 +22,6 @@ function($, _, Backbone, moment, FastClick,
                 id: 'player1'
             });
 
-            var players = new PlayerCollection([player0, player1]);
-
             new PlayerView({
                 model: player0,
                 el: '#yc-player-0'
@@ -34,6 +32,8 @@ function($, _, Backbone, moment, FastClick,
                 el: '#yc-player-1'
             });
 
+            var players = new PlayerCollection([player0, player1]);
+
             var operation = new Operation({
                 players: players
             });
@@ -43,9 +43,17 @@ function($, _, Backbone, moment, FastClick,
                 el: '#yc-operand'
             });
 
+            var timer = new Timer();
+
+            new TimerView({
+                model: timer,
+                el: '#yc-timer'
+            });
+
             new ButtonView({
                 players: players,
                 operation: operation,
+                timer: timer,
                 el: '#yc-calculator'
             });
 

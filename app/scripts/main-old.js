@@ -367,7 +367,6 @@ $(function () {
     });
 
     /**
-     * Timer Model and View
      * Controls the matches' Timer, how and when it is rendered, reset, and
      * when overtime occurs and a match enters "turns."
      */

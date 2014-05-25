@@ -35,7 +35,7 @@ function ($) {
             ratio: 1
         });
 
-        $('.yc-timer').fitText({
+        $('.yc-timer-display').fitText({
             compression: 0.8,
             dimension: 'height',
             lineHeight: true,

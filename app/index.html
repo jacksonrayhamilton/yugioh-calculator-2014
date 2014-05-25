@@ -44,12 +44,12 @@
             </div>
 
             <div class="pure-g yc-standard-row">
-                <div class="pure-u-1-5 yc-cell">
+                <div class="pure-u-1-5 yc-cell yc-restart-timer">
                     <div class="yc-button yc-special-button yc-glyph">
                         <div class="icon-fa-clock"></div>
                     </div>
                 </div>
-                <div class="pure-u-1-5 yc-cell yc-reset">
+                <div class="pure-u-1-5 yc-cell yc-reset-life-points">
                     <div class="yc-button yc-special-button yc-glyph">
                         <div class="icon-fa-reset"></div>
                     </div>
@@ -135,7 +135,11 @@
 
             <div class="pure-g yc-standard-row yc-timer-font">
                 <div class="pure-u-2-5 yc-cell">
-                    <div class="yc-timer">40:00</div>
+                    <div id="yc-timer" class="yc-timer">
+                        <div class="yc-timer-display">00:00</div>
+                        <div class="yc-timer-previous-turn"></div>
+                        <div class="yc-timer-next-turn"></div>
+                    </div>
                 </div>
                 <div class="pure-u-1-5 yc-cell">
                     <div class="yc-button yc-special-button yc-glyph">
