@@ -16,8 +16,12 @@ function (Backbone, insertString) {
             };
         },
 
+        initialize: function (args) {
+            this.players = args.players;
+        },
+
         // Inserts digit(s) into the value, from the current index
-        insertDigit: function(digit) {
+        insertDigit: function (digit) {
             var index = this.get('index');
             this.set({
                 value: insertString(this.get('value'), digit, index),
@@ -26,7 +30,7 @@ function (Backbone, insertString) {
         },
 
         // Either replaces the last digit with a 0, or removes it
-        deleteLastDigit: function() {
+        deleteLastDigit: function () {
             var index = this.get('index');
             if (index > 0) {
                 var replacement = (index <= 4) ? '0' : '';
@@ -37,11 +41,11 @@ function (Backbone, insertString) {
             }
         },
 
-        clearValue: function() {
+        clearValue: function () {
             this.set(this.defaults());
         },
 
-        enterValue: function(sign) {
+        enterValue: function (sign) {
             var selectedPlayer = this.players.getSelected();
             var integerValue = parseInt(this.get('value'));
             if (sign === '+') {
@@ -51,6 +55,7 @@ function (Backbone, insertString) {
             }
             this.clearValue();
         }
+
     });
 
     return Operation;

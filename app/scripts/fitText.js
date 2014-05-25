@@ -11,7 +11,8 @@ define(['jquery', 'fittext'], function ($) {
             compression: 0.95,
             dimension: 'height',
             lineHeight: true,
-            ratio: 1 / 3
+            ratio: 1 / 3,
+            shrinkRate: 2
         });
 
         $('.yc-tap-hint').fitText({

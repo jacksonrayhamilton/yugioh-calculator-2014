@@ -34,7 +34,8 @@ html, button, input, select, textarea,
     font-family: 'Liquid Crystal';
 }
 
-.yc-calculator-container {
+.yc-calculator {
+    // overflow: hidden; // Off for testing, on for production.
     height: 100%;
     background: #131313 url('../images/dark-leather.jpg') center center;
 }

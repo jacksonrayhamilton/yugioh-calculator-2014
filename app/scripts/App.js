@@ -1,7 +1,9 @@
 define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick',
-        './Player', './PlayerCollection', './PlayerView', './Operation', './OperationView', './fitText'],
+        './Player', './PlayerCollection', './PlayerView', './Operation', './OperationView',
+        './ButtonView', './fitText'],
 function($, _, Backbone, moment, FastClick,
-         Player, PlayerCollection, PlayerView, Operation, OperationView, fitText) {
+         Player, PlayerCollection, PlayerView, Operation, OperationView,
+         ButtonView, fitText) {
 
     'use strict';
 
@@ -39,6 +41,11 @@ function($, _, Backbone, moment, FastClick,
             new OperationView({
                 model: operation,
                 el: '#yc-operand'
+            });
+
+            new ButtonView({
+                operation: operation,
+                el: '#yc-calculator'
             });
 
             // Make predefined texts fit to their containers.
