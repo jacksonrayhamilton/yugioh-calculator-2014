@@ -1,7 +1,8 @@
 /**
  * Sets up texts to automatically fit to their containers.
  */
-define(['jquery', 'fittext'], function ($) {
+define(['jquery', 'fittext'],
+function ($) {
 
     'use strict';
 

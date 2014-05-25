@@ -10,12 +10,16 @@ function ($, Backbone) {
     var ButtonView = Backbone.View.extend({
 
         initialize: function (args) {
+            this.players = args.players;
             this.operation = args.operation;
         },
 
         events: {
             // 'click .specialButton': 'subViewButtonHandler',
             // 'click #donate': 'subViewButtonHandler',
+            'click .yc-reset': function () {
+                this.players.resetLifePoints();
+            },
             'click .yc-digit': function (event) {
                 // Extract the digit data from the clicked element, but make it
                 // a string because jQuery likes to parse it.

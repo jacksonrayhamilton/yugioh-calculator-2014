@@ -44,6 +44,7 @@ function($, _, Backbone, moment, FastClick,
             });
 
             new ButtonView({
+                players: players,
                 operation: operation,
                 el: '#yc-calculator'
             });
