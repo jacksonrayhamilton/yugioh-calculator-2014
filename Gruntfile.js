@@ -430,19 +430,17 @@ module.exports = function (grunt) {
                     out: '<%= config.dist %>/scripts/main.js',
                     wrap: true,
                     paths: {
-                        // TODO: Find a way to avoid duplicating these paths.
                         jquery: '../../bower_components/jquery/dist/jquery',
                         fittext: '../../bower_components/FitText.js/jquery.fittext',
                         underscore: '../../bower_components/underscore/underscore',
                         backbone: '../../bower_components/backbone/backbone',
                         localstorage: '../../bower_components/backbone.localStorage/backbone.localStorage',
                         moment: '../../bower_components/moment/moment',
-                        fastclick: '../../bower_components/fastclick/lib/fastclick',
-                        domready: '../../bower_components/requirejs-domready/domReady'
+                        fastclick: '../../bower_components/fastclick/lib/fastclick'
                     },
                     shim: {
                         fittext: {
-                            deps: [ 'jquery' ]
+                            deps: [ 'jquery', 'underscore' ]
                         }
                     }
                 }
