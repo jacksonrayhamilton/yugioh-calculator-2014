@@ -32,7 +32,7 @@ function (Backbone) {
 
             // Remove leading zeroes in the displayed value.
             if (index > 0) {
-                displayedValue = displayedValue.replace(/^0+/, function(match) {
+                displayedValue = displayedValue.replace(/^0+/, function (match) {
                     return new Array(match.length + 1).join('&nbsp;');
                 });
             }
