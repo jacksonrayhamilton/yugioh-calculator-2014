@@ -10,7 +10,7 @@ function (Backbone) {
 
         initialize: function () {
             this.$lifePoints = this.$el.find('.yc-life-points');
-            this.$tapHint = this.$el.find('.yc-tap-hint');
+            this.$tapHint = this.$el.find('.yc-tap-hint-content');
             this.listenTo(this.model, 'change:lifePoints', this.renderLifePoints);
             this.listenTo(this.model, 'change:selected', this.renderSelected);
             this.render();

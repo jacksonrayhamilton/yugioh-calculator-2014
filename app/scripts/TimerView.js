@@ -32,7 +32,7 @@ function (Backbone, formatMs) {
                 this.$previousTurn.hide();
                 this.$nextTurn.hide();
             } else {
-                this.$display.html(turn);
+                this.$display.html(/*turn*/'time');
                 if (turn === 0) {
                     this.$previousTurn.hide();
                 } else {
