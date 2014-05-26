@@ -36,17 +36,19 @@ function (Backbone, _, Operand, Operator) {
                 }),
                 new Operand()
             ];
-            var items = this.get('items');
             var index = this.get('index');
             this.set('index', index + newItems.length);
-            this.set('items', items.concat(newItems));
+            this.set('items', this.get('items').concat(newItems));
         },
 
         backspace: function () {
+            var index = this.get('index');
             var currentItem = this.getCurrentItem();
             var currentItemIndex = currentItem.get('index');
-            if (this.index > 0 && currentItemIndex === 0) {
-                // Do deletion.
+            if (index > 0 && currentItemIndex === 0) {
+                var items = this.get('items');
+                items.splice(items.length - 2, 2);
+                this.set('index', index - 2);
             } else if (currentItemIndex > 0) {
                 currentItem.deleteLastDigit();
                 this.trigger('change');
