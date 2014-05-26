@@ -73,8 +73,14 @@ function (Backbone, _, Operand, Operator) {
         evaluate: function () {
             this.set({
                 items: _.reduce(this.get('items'), function (previous, current) {
+
+                    // Accumulate operands and operators.
                     previous.push(current);
+
+                    // 3 means there are enough items to evaluate a subexpression.
                     if (previous.length === 3) {
+
+                        // Evaluate the subexpression.
                         var loperand = parseInt(previous[0].get('value'));
                         var operator = previous[1].get('symbol');
                         var roperand = parseInt(previous[2].get('value'));
@@ -84,26 +90,41 @@ function (Backbone, _, Operand, Operator) {
                         } else if (operator === '-') {
                             result = loperand - roperand;
                         }
+
+                        // Create a zero-padded string representation of the result (%04d).
                         var resultString = result.toString();
                         var padding = 4 - resultString.length;
                         var paddedResultString = new Array(padding + 1).join('0') + resultString;
-                        var indexOfNonZero = resultString.search(/([^0])/);
+
+                        // Determine the index of the last non-zero digit in the result.
+                        var match,
+                            nonZeroRegexp = /([^0])/g,
+                            indexOfNonZero = -1;
+                        while ((match = nonZeroRegexp.exec(paddedResultString)) !== null) {
+                            indexOfNonZero = match.index;
+                        }
+
                         var newIndex;
                         if (indexOfNonZero > -1) {
-                            // There was a non-zero, so find the first zero after it.
-                            newIndex = indexOfNonZero + Math.max(0, resultString.indexOf('0'));
+                            // Set the index to the first zero after the last non-zero.
+                            newIndex = indexOfNonZero + Math.max(1, paddedResultString.substring(indexOfNonZero + 1).indexOf('0'));
                         } else {
-                            // All zeros, might as well start at the beginning.
+                            // All zeros, start at the beginning.
                             newIndex = 0;
                         }
+
+                        // Yield the result.
                         return [new Operand({
                             value: paddedResultString,
                             index: newIndex
                         })];
                     } else {
+                        // Yield the accumulation.
                         return previous;
                     }
                 }, []),
+
+                // There will only be one term when we're through.
                 index: 0
             });
         }
