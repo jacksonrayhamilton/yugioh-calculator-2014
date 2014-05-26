@@ -64,12 +64,16 @@ html, button, input, select, textarea,
     padding: 0;
 }
 
+.yc-life-points {
+    overflow: hidden;
+}
+
 .yc-tap-hint {
     display: table;
     position: absolute;
     top: 0;
     height: 100%;
-    padding: 4px;
+    padding: 2%;
     text-align: left;
 }
 
@@ -84,7 +88,7 @@ html, button, input, select, textarea,
 }
 
 .yc-selected-life-points,
-.yc-selected-operation-digit {
+.yc-selected-operand-digit {
     background-color: #899c88;
 }
 
@@ -96,15 +100,16 @@ html, button, input, select, textarea,
     border-radius: 0 0 0 10px;
 }
 
-.yc-selected-operation-digit {
-    display: inline-block;
+.yc-expression {
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 // All of these containers should fill their vertical space so that they will
 // look like buttons.
 .yc-button,
 .yc-life-points,
-.yc-operand,
+.yc-expression,
 .yc-timer,
 .yc-timer-display {
     height: 100%;
@@ -148,6 +153,9 @@ html, button, input, select, textarea,
 }
 .yc-cancel-button {
     font-weight: bold;
+}
+.yc-evaluating {
+    background-color: #E38C32 !important;
 }
 
 .yc-glyph {

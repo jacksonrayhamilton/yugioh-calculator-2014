@@ -3,17 +3,9 @@ function (Backbone) {
 
     'use strict';
 
-    /**
-     * Representation of the number in the current operation being performed.
-     */
-    var OperationView = Backbone.View.extend({
+    var OperandView = Backbone.View.extend({
 
-        initialize: function() {
-            this.listenTo(this.model, 'change', this.render);
-            this.render();
-        },
-
-        getDisplayedValue: function() {
+        getDisplayedValue: function (isSelected) {
             var value = this.model.get('value');
             var index = this.model.get('index');
 
@@ -24,27 +16,29 @@ function (Backbone) {
                 wrappedChar = '&nbsp;';
             }
 
-            // Wrap that "currently selected" character.
-            var displayedValue =
+            var displayedValue;
+            if (isSelected) {
+                // Wrap that "currently selected" character.
+                displayedValue =
                     value.substring(0, index) +
-                    '<div class="yc-selected-operation-digit">' + wrappedChar + '</div>' +
+                    '<span class="yc-selected-operand-digit">' + wrappedChar + '</span>' +
                     value.substring(index + 1);
+            } else {
+                displayedValue = value;
+            }
 
             // Remove leading zeroes in the displayed value.
             if (index > 0) {
                 displayedValue = displayedValue.replace(/^0+/, function (match) {
-                    return new Array(match.length + 1).join('&nbsp;');
+                    return new Array(match.length + 1).join('');
                 });
             }
 
             return displayedValue;
-        },
-
-        render: function() {
-            this.$el.html(this.getDisplayedValue());
         }
+
     });
 
-    return OperationView;
+    return OperandView;
 
 });

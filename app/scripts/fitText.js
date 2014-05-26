@@ -21,7 +21,7 @@ function ($) {
             dimension: 'height'
         });
 
-        $('.yc-operand').fitText({
+        $('.yc-expression').fitText({
             compression: 0.8,
             dimension: 'height',
             lineHeight: true,

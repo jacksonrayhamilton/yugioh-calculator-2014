@@ -3,21 +3,13 @@ function (Backbone, insertString) {
 
     'use strict';
 
-    /**
-     * Controls the value of the addition/subtraction Operation that the
-     * user is performing on a Player, and provides how that value is changed.
-     */
-    var Operation = Backbone.Model.extend({
+    var Operand = Backbone.Model.extend({
 
         defaults: function() {
             return {
                 value: '0000',
                 index: 0
             };
-        },
-
-        initialize: function (args) {
-            this.players = args.players;
         },
 
         // Inserts digit(s) into the value, from the current index
@@ -39,25 +31,10 @@ function (Backbone, insertString) {
                     index: index - 1
                 });
             }
-        },
-
-        clearValue: function () {
-            this.set(this.defaults());
-        },
-
-        enterValue: function (sign) {
-            var selectedPlayer = this.players.getSelected();
-            var integerValue = parseInt(this.get('value'));
-            if (sign === '+') {
-                selectedPlayer.gain(integerValue);
-            } else {
-                selectedPlayer.lose(integerValue);
-            }
-            this.clearValue();
         }
 
     });
 
-    return Operation;
+    return Operand;
 
 });

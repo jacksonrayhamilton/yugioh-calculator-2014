@@ -1,13 +1,19 @@
 define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick',
-        './Player', './PlayerCollection', './PlayerView', './Operation', './OperationView',
+        './Player', './PlayerCollection', './PlayerView', './Expression', './ExpressionView',
         './ButtonView', './Timer', './TimerView', './fitText'],
 function($, _, Backbone, moment, FastClick,
-         Player, PlayerCollection, PlayerView, Operation, OperationView,
+         Player, PlayerCollection, PlayerView, Expression, ExpressionView,
          ButtonView, Timer, TimerView, fitText) {
 
     'use strict';
 
     var App = Backbone.Model.extend({
+
+        defaults: function () {
+            return {
+                expressionEvaluationMode: false
+            };
+        },
 
         initialize: function () {
 
@@ -34,13 +40,13 @@ function($, _, Backbone, moment, FastClick,
 
             var players = new PlayerCollection([player0, player1]);
 
-            var operation = new Operation({
+            var expression = new Expression({
                 players: players
             });
 
-            new OperationView({
-                model: operation,
-                el: '#yc-operand'
+            new ExpressionView({
+                model: expression,
+                el: '#yc-expression'
             });
 
             var timer = new Timer({
@@ -53,8 +59,9 @@ function($, _, Backbone, moment, FastClick,
             });
 
             new ButtonView({
+                app: this,
                 players: players,
-                operation: operation,
+                expression: expression,
                 timer: timer,
                 el: '#yc-calculator'
             });

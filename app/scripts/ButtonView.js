@@ -4,15 +4,31 @@ function ($, Backbone) {
     'use strict';
 
     /**
-     * Provides the main user interface, allowing for digit, math, operation
+     * Provides the main user interface, allowing for digit, math, expression
      * and special buttons to be pressed.
      */
     var ButtonView = Backbone.View.extend({
 
         initialize: function (args) {
+            this.app = args.app;
             this.players = args.players;
-            this.operation = args.operation;
+            this.expression = args.expression;
             this.timer = args.timer;
+            this.$expressionEvaluationButton = this.$el.find('.yc-expression-evaluation-button');
+            this.listenTo(this.app, 'change:expressionEvaluationMode', this.renderExpressionEvaluationButton);
+            this.render();
+        },
+
+        render: function () {
+            this.renderExpressionEvaluationButton();
+        },
+
+        renderExpressionEvaluationButton: function () {
+            if (this.app.get('expressionEvaluationMode')) {
+                this.$expressionEvaluationButton.addClass('yc-evaluating');
+            } else {
+                this.$expressionEvaluationButton.removeClass('yc-evaluating');
+            }
         },
 
         events: {
@@ -28,21 +44,37 @@ function ($, Backbone) {
                 // Extract the digit data from the clicked element, but make it
                 // a string because jQuery likes to parse it.
                 var digit = $(event.currentTarget).data('digit') + '';
-                this.operation.insertDigit(digit);
+                this.expression.insertDigit(digit);
             },
             'click .yc-backspace': function () {
-                this.operation.deleteLastDigit();
+                this.expression.backspace();
             },
             'click .yc-clear': function () {
-                this.operation.clearValue();
+                this.expression.clearValue();
+            },
+            'click .yc-expression-evaluation': function () {
+                if (this.app.get('expressionEvaluationMode')) {
+                    this.expression.evaluate();
+                    this.app.set('expressionEvaluationMode', false);
+                } else {
+                    this.app.set('expressionEvaluationMode', true);
+                }
             },
             'click .yc-plus': function () {
-                this.operation.enterValue('+');
+                if (this.app.get('expressionEvaluationMode')) {
+                    this.expression.insertOperator('+');
+                } else {
+                    this.expression.enterValue('+');
+                }
             },
             'click .yc-minus': function () {
-                this.operation.enterValue('-');
+                if (this.app.get('expressionEvaluationMode')) {
+                    this.expression.insertOperator('-');
+                } else {
+                    this.expression.enterValue('-');
+                }
             }
-        },
+        }
 
         // subViewButtonHandler: function(event) {
         //     var subView = event.currentTarget.id;
