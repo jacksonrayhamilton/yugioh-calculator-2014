@@ -1,9 +1,9 @@
 define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick',
         './Player', './PlayerCollection', './PlayerView', './Expression', './ExpressionView',
-        './ButtonView', './Timer', './TimerView', './fitText'],
+        './ButtonView', './Timer', './TimerView', './Undos', './fitText'],
 function($, _, Backbone, moment, FastClick,
          Player, PlayerCollection, PlayerView, Expression, ExpressionView,
-         ButtonView, Timer, TimerView, fitText) {
+         ButtonView, Timer, TimerView, Undos, fitText) {
 
     'use strict';
 
@@ -58,11 +58,18 @@ function($, _, Backbone, moment, FastClick,
                 el: '#yc-timer'
             });
 
+            var undos = new Undos({
+                id: 'undos',
+                players: players,
+                timer: timer
+            });
+
             new ButtonView({
                 app: this,
                 players: players,
                 expression: expression,
                 timer: timer,
+                undos: undos,
                 el: '#yc-calculator'
             });
 

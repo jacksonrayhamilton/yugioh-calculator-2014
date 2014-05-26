@@ -13,11 +13,19 @@ function (PersistentModel) {
         },
 
         gain: function (amount) {
-            this.set('lifePoints', this.get('lifePoints') + amount);
+            this.set({
+                lifePoints: this.get('lifePoints') + amount
+            }, {
+                delta: amount
+            });
         },
 
         lose: function (amount) {
-            this.set('lifePoints', this.get('lifePoints') - amount);
+            this.set({
+                lifePoints: this.get('lifePoints') - amount
+            }, {
+                delta: -1 * amount
+            });
         },
 
         resetLifePoints: function() {

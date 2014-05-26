@@ -14,6 +14,7 @@ function ($, Backbone) {
             this.players = args.players;
             this.expression = args.expression;
             this.timer = args.timer;
+            this.undos = args.undos;
             this.$expressionEvaluationButton = this.$el.find('.yc-expression-evaluation-button');
             this.listenTo(this.app, 'change:expressionEvaluationMode', this.renderExpressionEvaluationButton);
             this.render();
@@ -39,6 +40,9 @@ function ($, Backbone) {
             },
             'click .yc-reset-life-points': function () {
                 this.players.resetLifePoints();
+            },
+            'click .yc-undo': function () {
+                this.undos.undo();
             },
             'click .yc-digit': function (event) {
                 // Extract the digit data from the clicked element, but make it

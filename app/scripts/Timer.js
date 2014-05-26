@@ -44,12 +44,17 @@ function (PersistentModel, _) {
             }
         },
 
-        restart: function() {
+        clearTimeout: function () {
             clearTimeout(this.get('timeout'));
+        },
+
+        restart: function() {
+            this.clearTimeout();
             this.set({
                 startTime: new Date().getTime(),
                 turn: null
             });
+            this.trigger('restart');
             this.tick();
         },
 

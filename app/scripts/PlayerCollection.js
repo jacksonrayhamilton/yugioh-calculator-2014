@@ -36,6 +36,7 @@ function (Backbone, _, Player) {
             this.forEach(function (player) {
                 player.resetLifePoints();
             });
+            this.trigger('lifePointsReset');
         }
 
     });
