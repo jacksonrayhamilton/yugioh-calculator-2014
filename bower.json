@@ -3,7 +3,7 @@
     "private": true,
     "dependencies": {
         "modernizr": "~2.8.1",
-        "jquery": "~2.1.1",
+        "jquery": "~1.11.1",
         "fastclick": "~1.0.1",
         "backbone": "~1.1.2",
         "underscore": "~1.6.0",

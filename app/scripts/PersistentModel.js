@@ -5,6 +5,8 @@ function (Backbone) {
 
     var prefix = 'yc-';
 
+    // TODO: Add alternate behavior if localStorage doesn't exist.
+
     /**
      * Allows for persisting/restoring the state of Models through localStorage.
      * Restores a Model on instantiation. Persists it on change.
