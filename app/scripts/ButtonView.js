@@ -15,6 +15,7 @@ function ($, Backbone) {
             this.expression = args.expression;
             this.timer = args.timer;
             this.undos = args.undos;
+            this.blackWindowView = args.blackWindowView;
             this.$expressionEvaluationButton = this.$el.find('.yc-expression-evaluation-button');
             this.listenTo(this.app, 'change:expressionEvaluationMode', this.renderExpressionEvaluationButton);
             this.render();
@@ -33,7 +34,7 @@ function ($, Backbone) {
         },
 
         events: {
-            // 'click .specialButton': 'subViewButtonHandler',
+            'click .yc-window-button': 'windowButtonHandler',
             // 'click #donate': 'subViewButtonHandler',
             'click .yc-restart-timer': function () {
                 this.timer.restart();
@@ -78,12 +79,13 @@ function ($, Backbone) {
                     this.expression.enterValue('-');
                 }
             }
+        },
+
+        windowButtonHandler: function (event) {
+            var subWindow = $(event.currentTarget).data('window');
+            this.blackWindowView.show(subWindow);
         }
 
-        // subViewButtonHandler: function(event) {
-        //     var subView = event.currentTarget.id;
-        //     blackWindowView.show(subView);
-        // }
     });
 
     return ButtonView;

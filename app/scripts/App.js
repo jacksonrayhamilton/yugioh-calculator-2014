@@ -1,9 +1,11 @@
 define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick',
         './Player', './PlayerCollection', './PlayerView', './Expression', './ExpressionView',
-        './ButtonView', './Timer', './TimerView', './Undos', './fitText', './resizeNotesGradient'],
+        './ButtonView', './Timer', './TimerView', './Undos', './Notes', './NotesView',
+        'BlackWindow', 'BlackWindowView', './fitText', './resizeNotesGradient'],
 function($, _, Backbone, moment, FastClick,
          Player, PlayerCollection, PlayerView, Expression, ExpressionView,
-         ButtonView, Timer, TimerView, Undos, fitText, resizeNotesGradient) {
+         ButtonView, Timer, TimerView, Undos, Notes, NotesView,
+         BlackWindow, BlackWindowView, fitText, resizeNotesGradient) {
 
     'use strict';
 
@@ -64,12 +66,35 @@ function($, _, Backbone, moment, FastClick,
                 timer: timer
             });
 
+            var notes = new Notes({
+                id: 'notes'
+            });
+
+            var notesView = new NotesView({
+                model: notes,
+                el: '.yc-notes-window'
+            });
+
+            var blackWindow = new BlackWindow();
+
+            var blackWindowView = new BlackWindowView({
+                el: '.yc-window',
+                model: blackWindow,
+                subViews: {
+                    notes: notesView//,
+                    //history: historyView,
+                    //ruling: rulingView,
+                    //random: randomView
+                }
+            });
+
             new ButtonView({
                 app: this,
                 players: players,
                 expression: expression,
                 timer: timer,
                 undos: undos,
+                blackWindowView: blackWindowView,
                 el: '#yc-calculator'
             });
 
@@ -79,10 +104,10 @@ function($, _, Backbone, moment, FastClick,
             // Change the lengths of the notes gradient as it grows.
             resizeNotesGradient();
 
-            // Hide the address bar in mobile safari
+            // Hide the address bar in old Mobile Safari.
             window.scrollTo(0, document.body.scrollHeight);
 
-            // Remove the 300ms delay on mobile devices
+            // Remove the 300ms delay on mobile devices.
             FastClick.attach(document.body);
 
         }

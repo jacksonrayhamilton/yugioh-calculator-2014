@@ -34,9 +34,9 @@ function ($) {
 
         $(window).on('resize orientationchange', setBackgroundImage);
 
+
         // Call once initially.
         setBackgroundImage();
-
     }
 
     return resizeNotesGradient;

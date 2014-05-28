@@ -172,7 +172,7 @@ html, button, input, select, textarea,
 }
 
 .yc-window {
-    //display: none;
+    display: none;
     position: fixed;
     top: 0;
     width: 100%;
@@ -195,7 +195,7 @@ $window-exit-button-height: 15%;
 }
 
 .yc-window-content {
-    //display: none;
+    display: none;
     height: 100%;
 }
 
