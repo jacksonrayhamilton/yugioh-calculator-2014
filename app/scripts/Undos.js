@@ -15,6 +15,7 @@ function (_, indexOfWhere, PersistentModel) {
         initialize: function (args) {
             this.players = args.players;
             this.timer = args.timer;
+            this.notes = args.notes;
             this.restore();
             this.on('change', function () {
                 //console.log(this.get('items'), this.get('games'));
@@ -24,6 +25,7 @@ function (_, indexOfWhere, PersistentModel) {
             this.listenTo(this.players, 'change:lifePoints', this.pushLifePointsDelta);
             this.listenTo(this.players, 'lifePointsReset', this.pushLifePointsReset);
             this.listenTo(this.timer, 'restart', this.pushTimerRestart);
+            this.listenTo(this.notes, 'clear', this.pushNotesClear);
         },
 
         push: function (item) {
@@ -91,9 +93,15 @@ function (_, indexOfWhere, PersistentModel) {
                 startTime: this.timer.previous('startTime'),
                 turn: this.timer.previous('turn')
             };
-            this.set({
-                items: this.get('items').concat(item)
-            });
+            this.set('items', this.get('items').concat(item));
+        },
+
+        pushNotesClear: function () {
+            var item = {
+                type: 'notesClear',
+                content: this.notes.previous('content')
+            };
+            this.set('items', this.get('items').concat(item));
         },
 
         /**
@@ -104,24 +112,38 @@ function (_, indexOfWhere, PersistentModel) {
             if (typeof last === 'undefined') {
                 return;
             }
-            if (last.type === 'lifePointsDelta') {
-                var player = this.players.get(last.player);
-                player.set('lifePoints', player.get('lifePoints') - last.delta);
-                // TODO: Log LP change undone.
-            } else if (last.type === 'lifePointsReset') {
-                _.forEach(last.lifePoints, function (item) {
-                    this.players.get(item.player).set('lifePoints', item.lifePoints);
-                }, this);
-                this.set('games', this.get('games') - 1);
-                // TODO: Log reset undone.
-            } else if (last.type === 'timerRestart') {
-                this.timer.clearTimeout();
-                this.timer.set({
-                    startTime: last.startTime,
-                    turn: last.turn
-                });
-                this.timer.tick();
-                // TODO: Log timer reset undone.
+            switch (last.type) {
+                case 'lifePointsDelta':
+                    var player = this.players.get(last.player);
+                    player.set('lifePoints', player.get('lifePoints') - last.delta);
+                    // TODO: Log LP change undone.
+                    break;
+                case 'lifePointsReset':
+                    _.forEach(last.lifePoints, function (item) {
+                        this.players.get(item.player).set('lifePoints', item.lifePoints);
+                    }, this);
+                    this.set('games', this.get('games') - 1);
+                    // TODO: Log reset undone.
+                    break;
+                case 'timerRestart':
+                    this.timer.clearTimeout();
+                    this.timer.set({
+                        startTime: last.startTime,
+                        turn: last.turn
+                    });
+                    this.timer.tick();
+                    // TODO: Log timer reset undone.
+                    break;
+                case 'notesClear':
+                    // If there is already content, don't overwrite it. Undoing
+                    // is a clear is meant to be a recovery option; it should
+                    // not be destructive.
+                    if (this.notes.get('content').length > 0) {
+                        break;
+                    }
+                    this.notes.set('content', last.content);
+                    this.notes.trigger('unclear');
+                    break;
             }
         }
 

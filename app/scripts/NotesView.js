@@ -7,7 +7,7 @@ function (SubView) {
 
         initialize: function () {
             this.$content = this.$el.find('.yc-notes');
-            this.listenTo(this.model, 'clear', this.render);
+            this.listenTo(this.model, 'clear unclear', this.render);
             this.render();
         },
 

@@ -60,12 +60,6 @@ function($, _, Backbone, moment, FastClick,
                 el: '#yc-timer'
             });
 
-            var undos = new Undos({
-                id: 'undos',
-                players: players,
-                timer: timer
-            });
-
             var notes = new Notes({
                 id: 'notes'
             });
@@ -86,6 +80,13 @@ function($, _, Backbone, moment, FastClick,
                     //ruling: rulingView,
                     //random: randomView
                 }
+            });
+
+            var undos = new Undos({
+                id: 'undos',
+                players: players,
+                timer: timer,
+                notes: notes
             });
 
             new ButtonView({
