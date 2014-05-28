@@ -1,9 +1,9 @@
 define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick',
         './Player', './PlayerCollection', './PlayerView', './Expression', './ExpressionView',
-        './ButtonView', './Timer', './TimerView', './Undos', './fitText'],
+        './ButtonView', './Timer', './TimerView', './Undos', './fitText', './resizeNotesGradient'],
 function($, _, Backbone, moment, FastClick,
          Player, PlayerCollection, PlayerView, Expression, ExpressionView,
-         ButtonView, Timer, TimerView, Undos, fitText) {
+         ButtonView, Timer, TimerView, Undos, fitText, resizeNotesGradient) {
 
     'use strict';
 
@@ -75,6 +75,9 @@ function($, _, Backbone, moment, FastClick,
 
             // Make predefined texts fit to their containers.
             fitText();
+
+            // Change the lengths of the notes gradient as it grows.
+            resizeNotesGradient();
 
             // Hide the address bar in mobile safari
             window.scrollTo(0, document.body.scrollHeight);

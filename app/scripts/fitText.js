@@ -28,11 +28,34 @@ function ($) {
             ratio: 1
         });
 
-        $('.yc-button').fitText({
+        $('.yc-main-button').fitText({
             compression: 0.85,
             dimension: 'height',
             lineHeight: true,
             ratio: 1
+        });
+
+        $('.yc-window-exit-button').fitText({
+            compression: 0.85,
+            dimension: 'height',
+            lineHeight: true,
+            ratio: 1
+        });
+
+        $('.yc-notes-clear-button').fitText({
+            compression: 0.85,
+            dimension: 'height',
+            lineHeight: true,
+            ratio: 1 / 3
+        });
+
+        $('.yc-notes').fitText({
+            compression: 0.1,
+            dimension: 'height',
+            container: $('.yc-notes-container')
+            // lineHeight: function ($element) {
+            //     return ($element.height() * 0.1) + 'px';
+            // }
         });
 
         $('.yc-timer-display').fitText({

@@ -41,53 +41,62 @@
 }
 
 .icon-fa-undo:before {
-  content: "a";
-}
-.icon-yc-backspace:before {
-  content: "b";
+  content: "\e000";
 }
 .icon-fa-plus:before {
-  content: "c";
+  content: "\e001";
 }
 .icon-fa-minus:before {
-  content: "d";
+  content: "\e002";
 }
 .icon-fa-pencil:before {
-  content: "e";
+  content: "\e003";
 }
 .icon-fa-clock:before {
-  content: "f";
+  content: "\e004";
 }
 .icon-fa-book:before {
-  content: "g";
+  content: "\e005";
 }
 .icon-fa-question-mark:before {
-  content: "h";
-}
-.icon-fa-dollar-sign:before {
-  content: "i";
-}
-.icon-fa-double-quote:before {
-  content: "j";
+  content: "\e006";
 }
 .icon-fa-ellipsis:before {
-  content: "k";
+  content: "\e007";
 }
 .icon-fa-info:before {
-  content: "l";
+  content: "\e008";
 }
 .icon-fa-reset:before {
-  content: "m";
+  content: "\e009";
 }
 .icon-fa-terminal:before {
-  content: "n";
-}
-.icon-fa-magnifying-glass:before {
-  content: "o";
+  content: "\e00a";
 }
 .icon-yc-dice:before {
-  content: "p";
+  content: "\e00b";
 }
 .icon-yc-coin:before {
-  content: "q";
+  content: "\e00c";
+}
+.icon-yc-backspace:before {
+  content: "\e00d";
+}
+.icon-fa-unlock:before {
+  content: "\e00e";
+}
+.icon-fa-mallet:before {
+  content: "\e00f";
+}
+.icon-fa-decrement:before {
+  content: "\e010";
+}
+.icon-fa-increment:before {
+  content: "\e011";
+}
+.icon-fa-increment-decrement:before {
+  content: "\e012";
+}
+.icon-fa-x:before {
+  content: "\e013";
 }
