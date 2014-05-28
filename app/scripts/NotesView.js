@@ -13,7 +13,7 @@ function (SubView) {
 
         events: {
             'keyup .yc-notes': function () {
-                this.model.set('content', this.$content.html());
+                this.model.set('content', this.$content.val());
             },
             'click .yc-notes-clear-button': function () {
                 this.model.clear();
@@ -21,7 +21,7 @@ function (SubView) {
         },
 
         render: function () {
-            this.$content.html(this.model.get('content'));
+            this.$content.val(this.model.get('content'));
         }
 
     });
