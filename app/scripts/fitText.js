@@ -51,8 +51,7 @@ function ($) {
 
         $('.yc-notes').fitText({
             compression: 0.1,
-            dimension: 'height',
-            container: $('.yc-notes-container')
+            dimension: 'height'
             // lineHeight: function ($element) {
             //     return ($element.height() * 0.1) + 'px';
             // }

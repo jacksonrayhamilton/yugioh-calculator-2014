@@ -217,29 +217,17 @@ $window-exit-button-height: 15%;
 }
 
 // 100 - (2 + 15 + 2 + 2 + 15 + 2) = 62
-.yc-notes-container {
-    overflow: hidden;
-    width: 100%;
-    height: 62%;
-    background-color: #FFFEDE;
-}
-
 .yc-notes {
     width: 100%;
-    height: 100%;
+    height: 62%;
     border: none;
     line-height: 1;
     text-align: left;
     color: #222;
-    /*background-image: repeating-linear-gradient(to bottom,
-                                                #FFFEDE,
-                                                #FFFEDE 9.5%,
-                                                #000 9.5%,
-                                                #000 10%);*/
+    background-color: #FFFEDE;
     resize: none;
     user-select: text;
     -webkit-overflow-scrolling: touch;
-    //background-attachment: local;
 }
 
 .yc-notes-clear-button {
