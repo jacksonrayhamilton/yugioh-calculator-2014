@@ -1,11 +1,11 @@
 define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick',
         './Player', './PlayerCollection', './PlayerView', './Expression', './ExpressionView',
         './ButtonView', './Timer', './TimerView', './Undos', './Notes', './NotesView',
-        'BlackWindow', 'BlackWindowView', './fitText', './resizeNotesGradient'],
+        'BlackWindow', 'BlackWindowView', './fitText'],
 function($, _, Backbone, moment, FastClick,
          Player, PlayerCollection, PlayerView, Expression, ExpressionView,
          ButtonView, Timer, TimerView, Undos, Notes, NotesView,
-         BlackWindow, BlackWindowView, fitText, resizeNotesGradient) {
+         BlackWindow, BlackWindowView, fitText) {
 
     'use strict';
 
@@ -102,7 +102,7 @@ function($, _, Backbone, moment, FastClick,
             fitText();
 
             // Change the lengths of the notes gradient as it grows.
-            resizeNotesGradient();
+            //resizeNotesGradient();
 
             // Hide the address bar in old Mobile Safari.
             window.scrollTo(0, document.body.scrollHeight);
