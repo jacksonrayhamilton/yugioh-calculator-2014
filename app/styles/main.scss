@@ -258,7 +258,11 @@ $yc-window-dummy-padding: 2%;
         }
 
         &.yc-history-display-name {
-            width: 25%;
+            width: 20%;
+        }
+
+        &.yc-history-icon {
+            width: 10%;
         }
 
         &.yc-history-description {
@@ -266,13 +270,13 @@ $yc-window-dummy-padding: 2%;
         }
 
         &.yc-history-timestamp {
-            width: 35%;
+            width: 30%;
         }
     }
 }
 
 .yc-history-row td {
-    padding: 1% 2%;
+    padding: 1%;
 }
 
 .yc-history-neutral {

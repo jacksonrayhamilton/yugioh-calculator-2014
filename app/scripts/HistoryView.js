@@ -28,9 +28,33 @@ function (_, SubView, TimeFormatter, Random) {
             return 'yc-history-neutral';
         },
 
+        getEventIcon: function (event) {
+            var clock = '<span class="icon-fa-clock"></span>';
+            var reset = '<span class="icon-fa-reset"></span>';
+            var undo = '<span class="icon-fa-undo"></span>';
+            var dice = '<span class="icon-yc-dice"></span>';
+            var coin = '<span class="icon-yc-coin"></span>';
+            switch (event.name) {
+                case 'lifePointsReset':
+                    return reset;
+                case 'lifePointsResetRevert':
+                    return undo;
+                case 'lifePointsRevert':
+                    return undo;
+                case 'timerRestart':
+                    return clock;
+                case 'timerRevert':
+                    return undo;
+                case 'roll':
+                    return dice;
+                case 'flip':
+                    return coin;
+            }
+        },
+
         getEventDescription: function (event) {
             switch (event.name) {
-                case 'lifePointsChanged':
+                case 'lifePointsChange':
                     if (event.roperand >= 0) {
                         return event.loperand + ' + ' + event.roperand + ' = ' + event.result;
                     } else {
@@ -38,13 +62,15 @@ function (_, SubView, TimeFormatter, Random) {
                     }
                     break;
                 case 'lifePointsReset':
-                    var previousValues = _.reduce(event.lifePoints, _.bind(function (arr, data) {
-                        arr.push(this.getDisplayName(data.playerId) + ': ' + data.lifePoints);
-                        return arr;
-                    }, this), []).join('; ');
-                    return 'Life points reset (' + previousValues + ').';
-                case 'timerRestarted':
+                    return 'Life points reset.';
+                case 'lifePointsResetRevert':
+                    return 'Life points reset reverted.';
+                case 'lifePointsRevert':
+                    return 'Life points reverted to ' + event.lifePoints + '.';
+                case 'timerRestart':
                     return 'Timer restarted (previous start time: ' + TimeFormatter.getTimestamp(event.startTime) + ').';
+                case 'timerRevert':
+                    return 'Timer reverted to start time ' + TimeFormatter.getTimestamp(event.startTime) + '.';
                 case 'roll':
                     return 'Rolled ' + event.result + '.';
                 case 'flip':
@@ -64,6 +90,7 @@ function (_, SubView, TimeFormatter, Random) {
                 var tr = _.template(this.$itemTemplateHtml, {
                     className: this.getClassName(playerId),
                     displayName: this.getDisplayName(playerId),
+                    icon: this.getEventIcon(item.event),
                     description: this.getEventDescription(item.event),
                     timestamp: TimeFormatter.getTimestamp(item.time)
                 });

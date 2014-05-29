@@ -104,9 +104,6 @@ function (_, indexOfWhere, PersistentModel) {
             this.set('items', this.get('items').concat(item));
         },
 
-        /**
-         * Performs undo logic.
-         */
         undo: function () {
             var last = this.pop();
             if (typeof last === 'undefined') {
@@ -115,15 +112,16 @@ function (_, indexOfWhere, PersistentModel) {
             switch (last.type) {
                 case 'lifePointsDelta':
                     var player = this.players.get(last.player);
-                    player.set('lifePoints', player.get('lifePoints') - last.delta);
-                    // TODO: Log LP change undone.
+                    var lifePoints = player.get('lifePoints') - last.delta;
+                    player.revertLifePoints(lifePoints);
                     break;
                 case 'lifePointsReset':
                     _.forEach(last.lifePoints, function (item) {
-                        this.players.get(item.player).set('lifePoints', item.lifePoints);
+                        var player = this.players.get(item.player);
+                        player.set({ lifePoints: item.lifePoints }, { resetRevert: true });
                     }, this);
+                    this.players.trigger('lifePointsResetRevert');
                     this.set('games', this.get('games') - 1);
-                    // TODO: Log reset undone.
                     break;
                 case 'timerRestart':
                     this.timer.clearTimeout();
@@ -131,8 +129,11 @@ function (_, indexOfWhere, PersistentModel) {
                         startTime: last.startTime,
                         turn: last.turn
                     });
+                    this.timer.trigger('revert', {
+                        startTime: last.startTime,
+                        turn: last.turn
+                    });
                     this.timer.tick();
-                    // TODO: Log timer reset undone.
                     break;
                 case 'notesClear':
                     // If there is already content, don't overwrite it. Undoing

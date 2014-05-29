@@ -19,6 +19,9 @@ define(function () {
         var seconds = date.getSeconds();
         var period;
         if (hours < 12) {
+            if (hours === 0) {
+                hours = 12;
+            }
             period = 'AM';
         } else {
             if (hours > 12) {

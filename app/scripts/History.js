@@ -26,9 +26,12 @@ function (_, PersistentModel) {
                 this.set('items', items.slice(overflow));
             }
 
-            this.listenTo(this.players, 'change:lifePoints', this.logLifePointsChanged);
+            this.listenTo(this.players, 'change:lifePoints', this.logLifePointsChange);
+            this.listenTo(this.players, 'lifePointsRevert', this.logLifePointsRevert);
             this.listenTo(this.players, 'lifePointsReset', this.logLifePointsReset);
+            this.listenTo(this.players, 'lifePointsResetRevert', this.logLifePointsResetRevert);
             this.listenTo(this.timer, 'restart', this.logTimerRestart);
+            this.listenTo(this.timer, 'revert', this.logTimerRevert);
             this.listenTo(this.random, 'change', this.logRandom);
 
         },
@@ -47,14 +50,14 @@ function (_, PersistentModel) {
          * Logs changes in life points, except when they are reset. (Resets are
          * handled by `logLifePointsReset`.
          */
-        logLifePointsChanged: function (model, value, options) {
-            if (!options.reset) {
+        logLifePointsChange: function (model, value, options) {
+            if (!options.revert && !options.reset && !options.resetRevert) {
                 var previous = model.previous('lifePoints');
                 var difference = value - previous;
                 this.log({
                     playerId: model.get('playerId'),
                     event: {
-                        name: 'lifePointsChanged',
+                        name: 'lifePointsChange',
                         loperand: previous,
                         roperand: difference,
                         result: value
@@ -63,11 +66,29 @@ function (_, PersistentModel) {
             }
         },
 
-        logLifePointsReset: function (options) {
+        logLifePointsRevert: function (options) {
+            console.log(options);
+            this.log({
+                playerId: options.playerId,
+                event: {
+                    name: 'lifePointsRevert',
+                    lifePoints: options.lifePoints
+                }
+            });
+        },
+
+        logLifePointsReset: function () {
             this.log({
                 event: {
-                    name: 'lifePointsReset',
-                    lifePoints: options.lifePoints
+                    name: 'lifePointsReset'
+                }
+            });
+        },
+
+        logLifePointsResetRevert: function () {
+            this.log({
+                event: {
+                    name: 'lifePointsResetRevert'
                 }
             });
         },
@@ -75,8 +96,17 @@ function (_, PersistentModel) {
         logTimerRestart: function () {
             this.log({
                 event: {
-                    name: 'timerRestarted',
+                    name: 'timerRestart',
                     startTime: this.timer.previous('startTime')
+                }
+            });
+        },
+
+        logTimerRevert: function (options) {
+            this.log({
+                event: {
+                    name: 'timerRevert',
+                    startTime: options.startTime
                 }
             });
         },
