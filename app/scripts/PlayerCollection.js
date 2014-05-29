@@ -36,7 +36,15 @@ function (Backbone, _, Player) {
             this.forEach(function (player) {
                 player.resetLifePoints();
             });
-            this.trigger('lifePointsReset');
+            this.trigger('lifePointsReset', {
+                lifePoints: this.reduce(function (arr, player) {
+                    arr.push({
+                        playerId: player.get('playerId'),
+                        lifePoints: player.previous('lifePoints')
+                    });
+                    return arr;
+                }, [])
+            });
         }
 
     });

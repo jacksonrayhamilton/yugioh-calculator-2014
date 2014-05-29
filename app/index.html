@@ -172,6 +172,21 @@
                     <div class="yc-window-dummy-padding"></div>
                     <div class="yc-button yc-pressable-button yc-notes-clear-button">Clear</div>
                 </div>
+                <div class="yc-window-content yc-history-window">
+                    <div class="yc-window-dummy-top-padding"></div>
+                    <div class="yc-window-dummy-padding"></div>
+                    <div class="yc-history-table-container">
+                        <table class="yc-history-table">
+                            <script type="text/template" class="yc-history-item-template">
+                                <tr class="yc-history-row <%= className %>">
+                                    <td class="yc-history-display-name"><%= displayName %></td>
+                                    <td class="yc-history-description"><%= description %></td>
+                                    <td class="yc-history-timestamp"><%= timestamp %></td>
+                                </tr>
+                            </script>
+                        </table>
+                    </div>
+                </div>
                 <div class="yc-button yc-window-exit-button">
                     <div class="icon-fa-x"></div>
                 </div>

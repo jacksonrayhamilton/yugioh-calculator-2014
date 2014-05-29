@@ -235,3 +235,71 @@ $window-exit-button-height: 15%;
     width: 50%;
     height: 15%;
 }
+
+.yc-history-table-container {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    height: 79%;
+    background-color: #ddd;
+}
+
+.yc-history-table {
+    width: 100%;
+    table-layout: fixed;
+
+    td {
+        vertical-align: middle;
+
+        &.yc-history-display-name,
+        &.yc-history-description,
+        &.yc-history-timestamp {
+            text-align: center;
+        }
+
+        &.yc-history-display-name {
+            width: 25%;
+        }
+
+        &.yc-history-description {
+            width: 40%;
+        }
+
+        &.yc-history-timestamp {
+            width: 35%;
+        }
+    }
+}
+
+.yc-history-row td {
+    padding: 1% 2%;
+}
+
+.yc-history-neutral {
+    color: #222;
+    &:nth-child(odd) {
+        background-color: #999;
+    }
+    &:nth-child(even) {
+        background-color: #bbb;
+    }
+}
+
+.yc-history-player-0 {
+    color: #7c0037;
+    &:nth-child(odd) {
+        background-color: #ff6bad;
+    }
+    &:nth-child(even) {
+        background-color: #ff9ec9;
+    }
+}
+
+.yc-history-player-1 {
+    color: #002b67;
+    &:nth-child(odd) {
+        background-color: #569cff;
+    }
+    &:nth-child(even) {
+        background-color: #89baff;
+    }
+}

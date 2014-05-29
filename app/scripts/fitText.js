@@ -52,9 +52,11 @@ function ($) {
         $('.yc-notes').fitText({
             compression: 0.1,
             dimension: 'height'
-            // lineHeight: function ($element) {
-            //     return ($element.height() * 0.1) + 'px';
-            // }
+        });
+
+        $('.yc-history-table-container').fitText({
+            compression: 0.04,
+            dimension: 'height'
         });
 
         $('.yc-timer-display').fitText({

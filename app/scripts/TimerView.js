@@ -1,5 +1,5 @@
-define(['backbone', './formatMs'],
-function (Backbone, formatMs) {
+define(['backbone', './TimeFormatter'],
+function (Backbone, TimeFormatter) {
 
     'use strict';
 
@@ -23,7 +23,7 @@ function (Backbone, formatMs) {
         },
 
         renderTime: function () {
-            this.$display.html(formatMs(this.model.getTimeLeft()));
+            this.$display.html(TimeFormatter.formatMs(this.model.getTimeLeft()));
         },
 
         renderTurn: function () {

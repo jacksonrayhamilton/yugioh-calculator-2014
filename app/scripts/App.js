@@ -1,11 +1,23 @@
 define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick',
-        './Player', './PlayerCollection', './PlayerView', './Expression', './ExpressionView',
-        './ButtonView', './Timer', './TimerView', './Undos', './Notes', './NotesView',
-        'BlackWindow', 'BlackWindowView', './fitText'],
+        'Player', 'PlayerCollection', 'PlayerView',
+        'Expression', 'ExpressionView',
+        'ButtonView',
+        'Timer', 'TimerView',
+        'Undos',
+        'Notes', 'NotesView',
+        'History', 'HistoryView',
+        'BlackWindow', 'BlackWindowView',
+        'fitText'],
 function($, _, Backbone, moment, FastClick,
-         Player, PlayerCollection, PlayerView, Expression, ExpressionView,
-         ButtonView, Timer, TimerView, Undos, Notes, NotesView,
-         BlackWindow, BlackWindowView, fitText) {
+         Player, PlayerCollection, PlayerView,
+         Expression, ExpressionView,
+         ButtonView,
+         Timer, TimerView,
+         Undos,
+         Notes, NotesView,
+         History, HistoryView,
+         BlackWindow, BlackWindowView,
+         fitText) {
 
     'use strict';
 
@@ -20,7 +32,7 @@ function($, _, Backbone, moment, FastClick,
         initialize: function () {
 
             var player0 = new Player({
-                playerId: 0, // TODO: Remove these?
+                playerId: 0,
                 id: 'player-0',
                 selected: true
             });
@@ -69,14 +81,26 @@ function($, _, Backbone, moment, FastClick,
                 el: '.yc-notes-window'
             });
 
+            var history = new History({
+                id: 'history',
+                players: players,
+                timer: timer//,
+                //random: random
+            });
+
+            var historyView = new HistoryView({
+                model: history,
+                el: '.yc-history-window'
+            });
+
             var blackWindow = new BlackWindow();
 
             var blackWindowView = new BlackWindowView({
                 el: '.yc-window',
                 model: blackWindow,
                 subViews: {
-                    notes: notesView//,
-                    //history: historyView,
+                    notes: notesView,
+                    history: historyView//,
                     //ruling: rulingView,
                     //random: randomView
                 }
