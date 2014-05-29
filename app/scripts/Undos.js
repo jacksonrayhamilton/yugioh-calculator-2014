@@ -17,11 +17,10 @@ function (_, indexOfWhere, PersistentModel) {
             this.timer = args.timer;
             this.notes = args.notes;
             this.restore();
-            this.on('change', function () {
-                //console.log(this.get('items'), this.get('games'));
+            this.on('change:items', function () {
+                this.clean(true);
                 this.persist();
             });
-            this.on('change:games', this.cleanGames);
             this.listenTo(this.players, 'change:lifePoints', this.pushLifePointsDelta);
             this.listenTo(this.players, 'lifePointsReset', this.pushLifePointsReset);
             this.listenTo(this.timer, 'restart', this.pushTimerRestart);
@@ -29,8 +28,7 @@ function (_, indexOfWhere, PersistentModel) {
         },
 
         push: function (item) {
-            this.get('items').push(item);
-            this.trigger('change:items');
+            this.set('items', this.get('items').concat(item));
         },
 
         pop: function () {
@@ -41,20 +39,14 @@ function (_, indexOfWhere, PersistentModel) {
             return item;
         },
 
-        /**
-         * Possibly cleans up old games after new ones have started.
-         */
-        cleanGames: function () {
-            var games = this.get('games');
-            if (games > Undos.GAMES_LIMIT) {
-                var items = this.get('items');
-                var index = indexOfWhere(items, {
-                    type: 'lifePointsReset'
-                });
-                var slicedItems = items.slice(index + 1);
+        clean: function (silent) {
+            var items = this.get('items');
+            if (items.length > Undos.MAX_ITEMS) {
                 this.set({
-                    items: slicedItems,
-                    games: games - 1
+                    items: items.slice(items.length - Undos.MAX_ITEMS)
+                }, {
+                    // May have to be silent to avoid infinite recursion.
+                    silent: silent
                 });
             }
         },
@@ -68,7 +60,7 @@ function (_, indexOfWhere, PersistentModel) {
                 player: player.id,
                 delta: options.delta
             };
-            this.set('items', this.get('items').concat(item));
+            this.push(item);
         },
 
         pushLifePointsReset: function () {
@@ -81,10 +73,7 @@ function (_, indexOfWhere, PersistentModel) {
                     };
                 })
             };
-            this.set({
-                items: this.get('items').concat(item),
-                games: this.get('games') + 1
-            });
+            this.push(item);
         },
 
         pushTimerRestart: function () {
@@ -93,7 +82,7 @@ function (_, indexOfWhere, PersistentModel) {
                 startTime: this.timer.previous('startTime'),
                 turn: this.timer.previous('turn')
             };
-            this.set('items', this.get('items').concat(item));
+            this.push(item);
         },
 
         pushNotesClear: function () {
@@ -101,7 +90,7 @@ function (_, indexOfWhere, PersistentModel) {
                 type: 'notesClear',
                 content: this.notes.previous('content')
             };
-            this.set('items', this.get('items').concat(item));
+            this.push(item);
         },
 
         undo: function () {
@@ -117,7 +106,6 @@ function (_, indexOfWhere, PersistentModel) {
                     break;
                 case 'lifePointsReset':
                     this.players.revertResetLifePoints(last.lifePoints);
-                    this.set('games', this.get('games') - 1);
                     break;
                 case 'timerRestart':
                     this.timer.revertRestart(last);
@@ -136,8 +124,7 @@ function (_, indexOfWhere, PersistentModel) {
         }
 
     }, {
-        // CONSIDER: Is this behavior for better or worse? Sheer numbers instead? Mins / maxes?
-        GAMES_LIMIT: 10
+        MAX_ITEMS: 50
     });
 
     return Undos;
