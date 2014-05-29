@@ -27,7 +27,6 @@ function($, App) {
         } catch (error) {
             console.error(error);
         }
-        window.lsclear = function() { localStorage.clear(); };
     });
 
 });
