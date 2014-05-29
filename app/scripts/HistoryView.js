@@ -1,5 +1,5 @@
-define(['underscore', 'SubView', 'TimeFormatter'],
-function (_, SubView, TimeFormatter) {
+define(['underscore', 'SubView', 'TimeFormatter', 'Random'],
+function (_, SubView, TimeFormatter, Random) {
 
     'use strict';
 
@@ -48,7 +48,7 @@ function (_, SubView, TimeFormatter) {
                 case 'roll':
                     return 'Rolled ' + event.result + '.';
                 case 'flip':
-                    return 'Flipped ' + event.result + '.';
+                    return 'Flipped ' + Random.getFlipFace(event.result) + '.';
             }
         },
 

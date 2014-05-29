@@ -5,6 +5,7 @@ define(['jquery', 'underscore', 'backbone', 'moment', 'fastclick',
         'Timer', 'TimerView',
         'Undos',
         'Notes', 'NotesView',
+        'Random', 'RandomView',
         'History', 'HistoryView',
         'BlackWindow', 'BlackWindowView',
         'fitText'],
@@ -15,6 +16,7 @@ function($, _, Backbone, moment, FastClick,
          Timer, TimerView,
          Undos,
          Notes, NotesView,
+         Random, RandomView,
          History, HistoryView,
          BlackWindow, BlackWindowView,
          fitText) {
@@ -81,11 +83,20 @@ function($, _, Backbone, moment, FastClick,
                 el: '.yc-notes-window'
             });
 
+            var random = new Random({
+                id: 'random'
+            });
+
+            var randomView = new RandomView({
+                model: random,
+                el: '.yc-random-window'
+            });
+
             var history = new History({
                 id: 'history',
                 players: players,
-                timer: timer//,
-                //random: random
+                timer: timer,
+                random: random
             });
 
             var historyView = new HistoryView({
@@ -96,14 +107,14 @@ function($, _, Backbone, moment, FastClick,
             var blackWindow = new BlackWindow();
 
             var blackWindowView = new BlackWindowView({
-                el: '.yc-window',
                 model: blackWindow,
                 subViews: {
                     notes: notesView,
-                    history: historyView//,
+                    history: historyView,
                     //ruling: rulingView,
-                    //random: randomView
-                }
+                    random: randomView
+                },
+                el: '.yc-window'
             });
 
             var undos = new Undos({

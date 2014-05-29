@@ -59,6 +59,27 @@ function ($) {
             dimension: 'height'
         });
 
+        $('.yc-random-button').fitText({
+            compression: 0.85,
+            dimension: 'height',
+            lineHeight: true,
+            ratio: 1
+        });
+
+        $('.yc-last-roll').fitText({
+            compression: 0.9,
+            dimension: 'height',
+            lineHeight: true
+        });
+
+        $('.yc-last-flip').fitText({
+            compression: 0.35,
+            dimension: 'height',
+            lineHeight: true,
+            ratio: 1,
+            shrinkRate: 1.5
+        });
+
         $('.yc-timer-display').fitText({
             compression: 0.8,
             dimension: 'height',

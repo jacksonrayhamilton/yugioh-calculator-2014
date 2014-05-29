@@ -29,7 +29,7 @@ function (_, PersistentModel) {
             this.listenTo(this.players, 'change:lifePoints', this.logLifePointsChanged);
             this.listenTo(this.players, 'lifePointsReset', this.logLifePointsReset);
             this.listenTo(this.timer, 'restart', this.logTimerRestart);
-            //this.listenTo(this.random, 'change', this.logRandom);
+            this.listenTo(this.random, 'change', this.logRandom);
 
         },
 
