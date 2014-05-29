@@ -48,7 +48,7 @@ function (PersistentModel, _) {
             clearTimeout(this.get('timeout'));
         },
 
-        restart: function() {
+        restart: function () {
             this.clearTimeout();
             this.set({
                 startTime: new Date().getTime(),
@@ -58,11 +58,24 @@ function (PersistentModel, _) {
             this.tick();
         },
 
-        getTimePassed: function() {
+        revertRestart: function (data) {
+            this.clearTimeout();
+            this.set({
+                startTime: data.startTime,
+                turn: data.turn
+            });
+            this.trigger('restartRevert', {
+                startTime: data.startTime,
+                turn: data.turn
+            });
+            this.tick();
+        },
+
+        getTimePassed: function () {
             return new Date().getTime() - this.get('startTime');
         },
 
-        getTimeLeft: function() {
+        getTimeLeft: function () {
             return Timer.MATCH_TIME - this.getTimePassed();
         }
 

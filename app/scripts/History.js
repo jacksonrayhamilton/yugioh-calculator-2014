@@ -31,7 +31,7 @@ function (_, PersistentModel) {
             this.listenTo(this.players, 'lifePointsReset', this.logLifePointsReset);
             this.listenTo(this.players, 'lifePointsResetRevert', this.logLifePointsResetRevert);
             this.listenTo(this.timer, 'restart', this.logTimerRestart);
-            this.listenTo(this.timer, 'revert', this.logTimerRevert);
+            this.listenTo(this.timer, 'restartRevert', this.logTimerRestartRevert);
             this.listenTo(this.random, 'change', this.logRandom);
 
         },
@@ -67,7 +67,6 @@ function (_, PersistentModel) {
         },
 
         logLifePointsRevert: function (options) {
-            console.log(options);
             this.log({
                 playerId: options.playerId,
                 event: {
@@ -102,10 +101,10 @@ function (_, PersistentModel) {
             });
         },
 
-        logTimerRevert: function (options) {
+        logTimerRestartRevert: function (options) {
             this.log({
                 event: {
-                    name: 'timerRevert',
+                    name: 'timerRestartRevert',
                     startTime: options.startTime
                 }
             });

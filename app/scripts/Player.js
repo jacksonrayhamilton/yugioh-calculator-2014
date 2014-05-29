@@ -39,7 +39,6 @@ function (PersistentModel) {
         },
 
         revertLifePoints: function (lifePoints) {
-            this.set({ lifePoints: null }, { silent: true });
             this.set({ lifePoints: lifePoints }, { revert: true });
             this.trigger('lifePointsRevert', {
                 playerId: this.get('playerId'),

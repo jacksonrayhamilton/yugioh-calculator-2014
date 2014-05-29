@@ -116,24 +116,11 @@ function (_, indexOfWhere, PersistentModel) {
                     player.revertLifePoints(lifePoints);
                     break;
                 case 'lifePointsReset':
-                    _.forEach(last.lifePoints, function (item) {
-                        var player = this.players.get(item.player);
-                        player.set({ lifePoints: item.lifePoints }, { resetRevert: true });
-                    }, this);
-                    this.players.trigger('lifePointsResetRevert');
+                    this.players.revertResetLifePoints(last.lifePoints);
                     this.set('games', this.get('games') - 1);
                     break;
                 case 'timerRestart':
-                    this.timer.clearTimeout();
-                    this.timer.set({
-                        startTime: last.startTime,
-                        turn: last.turn
-                    });
-                    this.timer.trigger('revert', {
-                        startTime: last.startTime,
-                        turn: last.turn
-                    });
-                    this.timer.tick();
+                    this.timer.revertRestart(last);
                     break;
                 case 'notesClear':
                     // If there is already content, don't overwrite it. Undoing

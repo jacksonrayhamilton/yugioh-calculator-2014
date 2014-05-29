@@ -43,7 +43,7 @@ function (_, SubView, TimeFormatter, Random) {
                     return undo;
                 case 'timerRestart':
                     return clock;
-                case 'timerRevert':
+                case 'timerRestartRevert':
                     return undo;
                 case 'roll':
                     return dice;
@@ -69,8 +69,8 @@ function (_, SubView, TimeFormatter, Random) {
                     return 'Life points reverted to ' + event.lifePoints + '.';
                 case 'timerRestart':
                     return 'Timer restarted (previous start time: ' + TimeFormatter.getTimestamp(event.startTime) + ').';
-                case 'timerRevert':
-                    return 'Timer reverted to start time ' + TimeFormatter.getTimestamp(event.startTime) + '.';
+                case 'timerRestartRevert':
+                    return 'Timer restart reverted; start time now: ' + TimeFormatter.getTimestamp(event.startTime) + '.';
                 case 'roll':
                     return 'Rolled ' + event.result + '.';
                 case 'flip':
