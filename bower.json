@@ -9,7 +9,6 @@
         "underscore": "~1.6.0",
         "requirejs": "~2.1.11",
         "requirejs-text": "~2.0.12",
-        "moment": "~2.6.0",
         "almond": "~0.2.9",
         "pure": "~0.4.2",
         "FitText.js": "jacksonrayhamilton/FitText.js"

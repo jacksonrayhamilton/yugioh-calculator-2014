@@ -1,8 +1,6 @@
-@import 'css3';
-
 * {
-    @include box-sizing(border-box);
-    @include user-select(none);
+    box-sizing: border-box;
+    user-select: none;
     // Remove iOS translucent-black click-rectangles.
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -17,7 +15,6 @@ body {
     height: 100%;
     color: #222;
     line-height: 1;
-    @include user-select();
 }
 
 html, button, input, select, textarea,

@@ -197,7 +197,7 @@ module.exports = function (grunt) {
         // Add vendor prefixed styles
         autoprefixer: {
             options: {
-                browsers: ['last 1 version']
+                browsers: ['last 10 version']
             },
             dist: {
                 files: [{
@@ -434,7 +434,6 @@ module.exports = function (grunt) {
                         fittext: '../../bower_components/FitText.js/jquery.fittext',
                         underscore: '../../bower_components/underscore/underscore',
                         backbone: '../../bower_components/backbone/backbone',
-                        moment: '../../bower_components/moment/moment',
                         fastclick: '../../bower_components/fastclick/lib/fastclick'
                     },
                     shim: {

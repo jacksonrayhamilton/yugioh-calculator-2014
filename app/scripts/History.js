@@ -129,7 +129,7 @@ function (_, PersistentModel) {
         }
 
     }, {
-        MAX_ITEMS: 75
+        MAX_ITEMS: 100
     });
 
     return History;

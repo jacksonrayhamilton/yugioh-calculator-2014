@@ -4,7 +4,6 @@ require.config({
         fittext: '/bower_components/FitText.js/jquery.fittext',
         underscore: '/bower_components/underscore/underscore',
         backbone: '/bower_components/backbone/backbone',
-        moment: '/bower_components/moment/moment',
         fastclick: '/bower_components/fastclick/lib/fastclick'
     },
     shim: {

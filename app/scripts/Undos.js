@@ -1,5 +1,5 @@
-define(['underscore', './indexOfWhere', './PersistentModel'],
-function (_, indexOfWhere, PersistentModel) {
+define(['underscore', './PersistentModel'],
+function (_, PersistentModel) {
 
     'use strict';
 
