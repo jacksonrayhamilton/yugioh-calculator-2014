@@ -88,6 +88,17 @@ function ($) {
             shrinkRate: 1.5
         });
 
+        $('.yc-window-title').fitText({
+            compression: 0.8,
+            dimension: 'height',
+            lineHeight: true
+        });
+
+        $('.yc-window-text').fitText({
+            compression: 0.05,
+            dimension: 'height'
+        });
+
     };
 
 });

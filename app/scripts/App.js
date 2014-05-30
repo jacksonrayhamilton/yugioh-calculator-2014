@@ -7,6 +7,8 @@ define(['jquery', 'underscore', 'backbone', 'fastclick',
         'Notes', 'NotesView',
         'Random', 'RandomView',
         'History', 'HistoryView',
+        'Ruling', 'RulingView',
+        'InfoView',
         'BlackWindow', 'BlackWindowView',
         'fitText'],
 function($, _, Backbone, FastClick,
@@ -18,6 +20,8 @@ function($, _, Backbone, FastClick,
          Notes, NotesView,
          Random, RandomView,
          History, HistoryView,
+         Ruling, RulingView,
+         InfoView,
          BlackWindow, BlackWindowView,
          fitText) {
 
@@ -104,6 +108,19 @@ function($, _, Backbone, FastClick,
                 el: '.yc-history-window'
             });
 
+            var ruling = new Ruling({
+
+            });
+
+            var rulingView = new RulingView({
+                model: ruling,
+                el: '.yc-ruling-window'
+            });
+
+            var infoView = new InfoView({
+                el: '.yc-info-window'
+            });
+
             var blackWindow = new BlackWindow();
 
             var blackWindowView = new BlackWindowView({
@@ -111,8 +128,9 @@ function($, _, Backbone, FastClick,
                 subViews: {
                     notes: notesView,
                     history: historyView,
-                    //ruling: rulingView,
-                    random: randomView
+                    ruling: rulingView,
+                    random: randomView,
+                    info: infoView
                 },
                 el: '.yc-window'
             });
