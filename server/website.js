@@ -17,8 +17,10 @@ var website = {
      */
     init: function (options) {
         this.url = options.url;
+        this.getPagePath = options.getPagePath;
         this.getRulings = options.getRulings;
         this.parseRulings = options.parseRulings;
+        this.getAttribution = options.getAttribution;
         return this;
     }
 

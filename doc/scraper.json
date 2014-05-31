@@ -9,11 +9,12 @@
     "error": null,
     "rulings": [
         {
-            source: "http://some-url",
-            items: [
+            "source": "http://some-url",
+            "items": [
                 "chunk of html",
                 "another chunk of html"
-            ]
+            ],
+            "attribution": "chunk of html with licensing info"
         },
         {
 

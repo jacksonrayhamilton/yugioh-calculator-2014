@@ -31,7 +31,7 @@ function get(options, callback) {
     }
 
     // Use the default / replace the wildcard.
-    if (options.sites.length === 0 || options.sites.indexOf('*') > -1) {
+    if (typeof options.sites === 'undefined' || options.sites.indexOf('*') > -1) {
         options.sites = Object.keys(sites);
     }
 

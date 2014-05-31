@@ -1,6 +1,9 @@
+var util = require('util');
 var ruling = require('./ruling');
 
 ruling.get({
     card: 'Dark Magician',
     sites: ['*']
-}, console.log);
+}, function (rulings) {
+    console.log(util.inspect(rulings, {depth: null}));
+});
