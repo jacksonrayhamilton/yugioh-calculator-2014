@@ -7,8 +7,10 @@
   },
   "dependencies": {
     "body-parser": "~1.0.0",
+    "cheerio": "^0.16.0",
     "connect": "~2.17.3",
     "st": "~0.4.1",
+    "underscore": "~1.6.0",
     "urlrouter": "~0.5.4"
   },
   "devDependencies": {

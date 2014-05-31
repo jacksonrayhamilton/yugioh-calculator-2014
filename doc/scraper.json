@@ -1,0 +1,22 @@
+// From client to server
+{
+    "card": "Thunder King Rai-Oh",
+    "sites": ["yugioh.wikia.com"]
+}
+
+// From server to client
+{
+    "error": null,
+    "rulings": [
+        {
+            source: "http://some-url",
+            items: [
+                "chunk of html",
+                "another chunk of html"
+            ]
+        },
+        {
+
+        }
+    ]
+}
