@@ -46,7 +46,13 @@ function get(options, callback) {
 
         // Accumulate rulings from each site.
         var site = sites[item];
-        site.getRulings(options.card, function getRulingsCallback(rulings) {
+        site.getRulings(options.card, function getRulingsCallback(err, rulings) {
+            if (err) {
+                response.error = err;
+                response.rulings = [];
+                callback(response);
+                return;
+            }
             Array.prototype.push.apply(response.rulings, rulings);
             callback(null);
         });

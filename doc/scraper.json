@@ -9,6 +9,7 @@
     "error": null,
     "rulings": [
         {
+            "error": null,
             "source": "http://some-url",
             "items": [
                 "chunk of html",
