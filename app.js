@@ -15,9 +15,13 @@ var app = connect()
     .use(bodyParser.json())
     .use(bodyParser.urlencoded())
     .use(urlrouter(function (app) {
-        app.get('/ruling', function (req, res, next) {
-            console.log(req);
-            res.end();
+        app.post('/ruling', function (req, res, next) {
+            ruling.get({
+                card: req.body.card,
+                sites: req.body.sites
+            }, function getCallback(rulings) {
+                res.end(JSON.stringify(rulings));
+            });
         });
     }))
     .use(mount);
