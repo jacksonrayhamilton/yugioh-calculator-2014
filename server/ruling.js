@@ -1,6 +1,7 @@
 'use strict';
 
-var yugiohwikia = require('yugiohwikia');
+var async = require('async');
+var yugiohwikia = require('./yugiohwikia');
 
 var sites = {
     'yugioh.wikia.com': yugiohwikia
@@ -14,39 +15,47 @@ var sites = {
  * @param {string[]} options.sites The websites to retrieve rulings
  * from. Defaults to ["*"]. If specified, will only retrieve rulings from the
  * specified sites. If ["*"], will retrieve rulings from all sites.
+ * @param {Function} callback Function to call once all rulings are accumulated.
  */
-function get(options) {
+function get(options, callback) {
 
-    var resp = {
+    var response = {
         error: null,
         rulings: []
     };
 
     if (typeof options.card === 'undefined' || options.card.length === 0) {
-        resp.error = 'No card name specified.';
-        return resp;
+        response.error = 'No card name specified.';
+        callback(response);
+        return;
     }
 
-    // Replace the wildcard.
-    if (options.sites.indexOf('*') > -1) {
+    // Use the default / replace the wildcard.
+    if (options.sites.length === 0 || options.sites.indexOf('*') > -1) {
         options.sites = Object.keys(sites);
     }
 
-    options.sites.every(function (siteKey) {
-        // Catch bad input and throw out results.
-        if (!sites.hasOwnProperty(siteKey)) {
-            resp.error = 'Unconfigured website specified.';
-            resp.rulings = [];
-            return false;
-        }
-        // Accumulate rulings from each site.
-        var site = sites[siteKey];
-        var rulings = site.getRulings(options.card);
-        Array.prototype.push.apply(resp.rulings, rulings);
-        return true;
-    });
+    async.each(options.sites, function siteIterator(item, callback) {
 
-    return resp;
+        // Catch bad input and throw out results.
+        if (!sites.hasOwnProperty(item)) {
+            response.error = 'Unconfigured website specified.';
+            response.rulings = [];
+            callback(response);
+        }
+
+        // Accumulate rulings from each site.
+        var site = sites[item];
+        site.getRulings(options.card, function getRulingsCallback(rulings) {
+            Array.prototype.push.apply(response.rulings, rulings);
+            callback(null);
+        });
+
+    }, function (err) {
+
+        callback(response);
+
+    });
 
 }
 

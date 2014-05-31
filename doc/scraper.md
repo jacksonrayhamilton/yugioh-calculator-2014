@@ -23,7 +23,7 @@ Website
 
 Yugioh Wikia
 ------------
-- Defines a method for constructing wikia page urls: getPagePath(card) which is
+- Defines a method for constructing wikia page urls: `getPagePath(card)` which is
   used by `getRulings` and is passed to `getPage`.
 
 Client

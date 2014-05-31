@@ -3,7 +3,7 @@ var st = require('st');
 var connect = require('connect');
 var bodyParser = require('body-parser');
 var urlrouter = require('urlrouter');
-var ruling = require('ruling');
+var ruling = require('./server/ruling');
 
 var mount = st({
     path: path.join(__dirname, 'dist'),
