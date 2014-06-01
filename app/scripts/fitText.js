@@ -99,6 +99,12 @@ function ($) {
             dimension: 'height'
         });
 
+        $('.yc-ruling-input, .yc-ruling-submit').fitText({
+            compression: 0.8,
+            dimension: 'height',
+            lineHeight: true
+        });
+
     };
 
 });

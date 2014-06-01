@@ -216,9 +216,27 @@
                 </div>
                 <div class="yc-window-content yc-ruling-window">
                     <div class="yc-window-dummy-top-padding"></div>
-                    <input type="text" class="yc-ruling-input"> <button class="yc-ruling-submit">Submit</button>
+                    <div class="yc-ruling-form">
+                        <input type="text" class="yc-ruling-input"><div class="yc-button yc-special-button yc-ruling-submit">Go</div>
+                    </div>
                     <div class="yc-window-dummy-padding"></div>
-                    <div class="yc-ruling-results" style="height: 400px; overflow-y: scroll;"></div>
+                    <div class="yc-ruling-results">
+                        <script type="text/template" class="yc-ruling-results-template">
+                            <% if (error) { %>
+                            Error: <%= error %>
+                            <% } else { %>
+                            <h2><a href="<%- source %>" target="_blank"><%- source %></a></h2>
+                            <ul>
+                                <% items.forEach(function (item) { %>
+                                <li><%= item %></li>
+                                <% }); %>
+                            </ul>
+                            <div class="yc-ruling-attribution">
+                                <%= attribution %>
+                            </div>
+                            <% } %>
+                        </script>
+                    </div>
                     <h1 class="yc-window-title">Ruling</h1>
                 </div>
                 <div class="yc-window-content yc-info-window">

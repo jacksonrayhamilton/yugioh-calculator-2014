@@ -195,25 +195,12 @@ function getRulings(card, callback) {
 
     var url = getPagePath(card);
 
-    if (url.match(/"/)) {
-        callback(null, {
-            error: 'Sorry, but for boring technical reasons, cards ' +
-                'containing "double quotes" in their names ' +
-                'cannot be searched for. (However, you can still ' +
-                'access this card\'s rulings ' +
-                '<a target="_blank" href="' + url + '">' +
-                'here</a>.)',
-            source: url
-        });
-        return;
-    }
-
     request(url, function (error, response, body) {
         if (error || response.statusCode !== 200) {
-            callback(null, {
-                error: response.statusCode + ': ' + error.toString(),
+            callback(null, [{
+                error: response.statusCode + (error ? ': ' + error.toString() : ''),
                 source: url
-            });
+            }]);
             return;
         }
         callback(null, [parseRulings({
@@ -240,7 +227,8 @@ function parseRulings(options) {
      '.RelatedPagesModule',
      '.printfooter',
      'noscript',
-     'a:contains(Edit)'].forEach(function (selector) {
+     'a:contains(Edit)',
+     'ol.references'].forEach(function (selector) {
         $WikiaArticle.find(selector).remove();
     });
 
@@ -265,6 +253,7 @@ function parseRulings(options) {
     });
 
     return {
+        error: null,
         source: options.url,
         items: lisHtml,
         attribution: getAttribution(options.url, title)

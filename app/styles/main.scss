@@ -373,3 +373,48 @@ $yc-window-dummy-padding: 2%;
         margin: 0 0 2% 0;
     }
 }
+
+.yc-ruling-form {
+    height: 10%;
+}
+
+.yc-ruling-input {
+    width: 79%;
+    height: 100%;
+    margin-right: 2%;
+    user-select: text;
+}
+
+.yc-ruling-submit {
+    display: inline-block;
+    width: 19%;
+    vertical-align: top;
+}
+
+.yc-ruling-results {
+    height: 67%;
+    padding: 1%;
+    overflow-y: scroll;
+    text-align: left;
+    line-height: 1.2em;
+    color: #ddd;
+    -webkit-overflow-scrolling: touch;
+    a {
+        color: #E9A354;
+    }
+    ul {
+        padding-left: 20px;
+    }
+    li {
+        margin: 0.5em 0;
+    }
+    h2 {
+        margin: 0;
+    }
+}
+
+.yc-ruling-attribution {
+    font-size: .9em;
+    font-style: italic;
+    text-align: justify;
+}

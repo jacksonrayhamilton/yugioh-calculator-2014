@@ -80,7 +80,7 @@ module.exports = function (grunt) {
         connect: {
             options: {
                 port: 9000,
-                open: true,
+                open: false,
                 livereload: 35729,
                 // Change this to '0.0.0.0' to access the server from outside
                 hostname: 'localhost'
@@ -88,10 +88,25 @@ module.exports = function (grunt) {
             livereload: {
                 options: {
                     middleware: function(connect) {
+                        var bodyParser = require('body-parser');
+                        var urlrouter = require('urlrouter');
+                        var ruling = require('./server/ruling');
                         return [
                             connect.static('.tmp'),
                             connect().use('/bower_components', connect.static('./bower_components')),
-                            connect.static(config.app)
+                            connect.static(config.app),
+                            connect().use(bodyParser.json()),
+                            connect().use(bodyParser.urlencoded()),
+                            connect().use(urlrouter(function (app) {
+                                app.post('/ruling', function (req, res) {
+                                    ruling.get({
+                                        card: req.body.card,
+                                        sites: req.body.sites
+                                    }, function getCallback(rulings) {
+                                        res.end(JSON.stringify(rulings));
+                                    });
+                                });
+                            }))
                         ];
                     }
                 }
