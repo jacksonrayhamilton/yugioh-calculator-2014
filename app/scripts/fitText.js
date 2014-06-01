@@ -35,6 +35,20 @@ function ($) {
             ratio: 1
         });
 
+        $('.yc-timer-display').fitText({
+            compression: 0.8,
+            dimension: 'height',
+            lineHeight: true,
+            ratio: 1 / 2,
+            shrinkRate: 1.5
+        });
+
+        $('.yc-window-title').fitText({
+            compression: 0.8,
+            dimension: 'height',
+            lineHeight: true
+        });
+
         $('.yc-window-exit-button').fitText({
             compression: 0.85,
             dimension: 'height',
@@ -80,27 +94,13 @@ function ($) {
             shrinkRate: 1.5
         });
 
-        $('.yc-timer-display').fitText({
-            compression: 0.8,
-            dimension: 'height',
-            lineHeight: true,
-            ratio: 1 / 2,
-            shrinkRate: 1.5
-        });
-
-        $('.yc-window-title').fitText({
-            compression: 0.8,
-            dimension: 'height',
-            lineHeight: true
-        });
-
         $('.yc-window-text').fitText({
             compression: 0.05,
             dimension: 'height'
         });
 
-        $('.yc-ruling-input, .yc-ruling-submit').fitText({
-            compression: 0.8,
+        $('.yc-ruling-submit').fitText({
+            compression: 0.75,
             dimension: 'height',
             lineHeight: true
         });

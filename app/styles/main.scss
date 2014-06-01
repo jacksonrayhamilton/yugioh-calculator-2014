@@ -1,6 +1,10 @@
 * {
     box-sizing: border-box;
+
+    // For usability don't select text. Override this only on elements that
+    // should be selectable.
     user-select: none;
+
     // Remove iOS translucent-black click-rectangles.
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -15,6 +19,10 @@ body {
     height: 100%;
     color: #222;
     line-height: 1;
+}
+
+a {
+    color: #E9A354;
 }
 
 html, button, input, select, textarea,
@@ -32,7 +40,7 @@ html, button, input, select, textarea,
 }
 
 .yc-calculator {
-    // overflow: hidden; // Off for testing, on for production.
+    overflow: hidden; // Off for testing, on for production.
     height: 100%;
     background: #131313 url('../images/dark-leather.jpg') center center;
 }
@@ -89,13 +97,13 @@ $yc-button-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25), inset 0 5px 30px rgb
 }
 
 .yc-lcd {
-    color: #0C170C;
-    background-color: #B2CCB1;
+    color: #111612;
+    background-color: #C9D4CB;
 }
 
 .yc-selected-life-points,
 .yc-selected-operand-digit {
-    background-color: #899c88;
+    background-color: #9aae9d;
 }
 
 #yc-player-0.yc-selected-life-points {
@@ -399,9 +407,6 @@ $yc-window-dummy-padding: 2%;
     line-height: 1.2em;
     color: #ddd;
     -webkit-overflow-scrolling: touch;
-    a {
-        color: #E9A354;
-    }
     ul {
         padding-left: 20px;
     }
@@ -411,6 +416,10 @@ $yc-window-dummy-padding: 2%;
     h2 {
         margin: 0;
     }
+}
+
+.yc-ruling-source-header {
+    word-wrap: break-word;
 }
 
 .yc-ruling-attribution {
