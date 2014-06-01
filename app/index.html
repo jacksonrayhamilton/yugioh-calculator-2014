@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <link rel="canonical" href="http://www.yugiohcalculator.com/">
         <link rel="shortcut icon" href="favicon.ico">
+        <link rel="apple-touch-icon" href="apple-touch-icon-precomposed.png">
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
         <link rel="stylesheet" href="../bower_components/pure/pure.css" />
@@ -223,7 +224,7 @@
                     <div class="yc-ruling-results">
                         <script type="text/template" class="yc-ruling-results-template">
                             <% if (error) { %>
-                            Error: <%= error %>
+                            <%= error %>
                             <% } else { %>
                             <h2 class="yc-ruling-source-header"><a href="<%- source %>" target="_blank"><%- source %></a></h2>
                             <ul>

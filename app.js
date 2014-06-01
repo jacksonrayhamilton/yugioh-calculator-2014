@@ -7,6 +7,11 @@ var ruling = require('./server/ruling');
 
 var mount = st({
     path: path.join(__dirname, 'dist'),
+    cache: {
+        content: {
+            maxAge: 1000 * 60 * 60 * 24 * 7
+        }
+    },
     index: 'index.html'
 });
 

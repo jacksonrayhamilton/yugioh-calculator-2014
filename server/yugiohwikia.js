@@ -198,7 +198,14 @@ function getRulings(card, callback) {
     request(url, function (error, response, body) {
         if (error || response.statusCode !== 200) {
             callback(null, [{
-                error: response.statusCode + (error ? ': ' + error.toString() : ''),
+                error: '<div class="yc-ruling-error">' +
+		    'Unable to access yugioh.wikia.com (' + response.statusCode + ').' +
+		    '<ul>' +
+		    '<li>You may have misspelled this card\'s name above.</li>' +
+		    '<li>This card may not have any rulings.</li>' +
+		    '<li>Wikia\'s site may be currently unavailable.</li>' +
+		    '</ul>' +
+		    '</div>',
                 source: url
             }]);
             return;

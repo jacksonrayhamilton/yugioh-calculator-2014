@@ -11,23 +11,29 @@ function ($, _, SubView) {
             this.resultsTemplate = _.template(this.$el.find('.yc-ruling-results-template').html());
         },
 
-        events: {
-            'click .yc-ruling-input': function () {
-                //this.$input.val('');
-            },
-            'click .yc-ruling-submit': function () {
-                var query = this.$input.val();
-                $.ajax({
-                    type: 'POST',
-                    url: '/ruling',
-                    data: {
-                        card: query
-                    },
-                    dataType: 'JSON'
-                })
+        submitRulingQuery: function () {
+            var query = this.$input.val();
+            $.ajax({
+                type: 'POST',
+                url: '/ruling',
+                data: {
+                    card: query
+                },
+                dataType: 'JSON'
+            })
                 .always(_.bind(function (data) {
                     this.populateResults(data);
                 }, this));
+        },
+
+        events: {
+            'keyup .yc-ruling-input': function (event) {
+                if (event.keyCode === 13) {
+                    this.submitRulingQuery();
+                }
+            },
+            'click .yc-ruling-submit': function () {
+                this.submitRulingQuery();
             }
         },
 
@@ -42,7 +48,6 @@ function ($, _, SubView) {
             }
 
             _.forEach(data.rulings, function (ruling) {
-                console.log(ruling);
                 html += this.resultsTemplate(ruling);
             }, this);
 
