@@ -151,7 +151,7 @@ module.exports = function (grunt) {
                     src: [
                         '<%= config.dist %>/scripts',
                         '<%= config.dist %>/styles',
-                        '<%= config.dist %>/*.{ico,png}'
+                        '<%= config.dist %>/*favicon.ico'
                     ]
                 }]
             },
@@ -244,7 +244,7 @@ module.exports = function (grunt) {
                         '<%= config.dist %>/styles/{,*/}*.css',
                         '<%= config.dist %>/images/{,*/}*.*',
                         '<%= config.dist %>/fonts/{,*/}*.*',
-                        '<%= config.dist %>/*.{ico,png}'
+                        '<%= config.dist %>/*.{ico}'
                     ]
                 }
             }

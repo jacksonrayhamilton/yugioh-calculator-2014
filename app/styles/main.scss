@@ -25,6 +25,16 @@ a {
     color: #E9A354;
 }
 
+.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+
 html, button, input, select, textarea,
 .pure-g [class *= "pure-u"],
 .pure-g-r [class *= "pure-u"] {
@@ -355,19 +365,10 @@ $yc-window-dummy-padding: 2%;
     height: 50%;
 }
 
-.yc-random-button {
-}
-
 .yc-last-roll,
 .yc-last-flip {
     height: 100%;
     color: #ddd;
-}
-
-.yc-last-roll {
-}
-
-.yc-last-flip {
 }
 
 .yc-info-text {
@@ -407,12 +408,23 @@ $yc-window-dummy-padding: 2%;
     line-height: 1.2em;
     color: #ddd;
     -webkit-overflow-scrolling: touch;
+
+    &.visible {
+        transition: opacity .3s;
+    }
+
+    &.hidden {
+        transition: visibility 0s .3s, opacity .3s;
+    }
+
     ul {
         padding-left: 20px;
     }
+
     li {
         margin: 0.5em 0;
     }
+
     h2 {
         margin: 0;
     }

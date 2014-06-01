@@ -12,6 +12,14 @@ function ($, _, SubView) {
         },
 
         submitRulingQuery: function () {
+            this.$results
+                .removeClass('visible')
+                .addClass('hidden');
+
+            setTimeout(_.bind(function () {
+                this.$results.scrollTop(0);
+            }, this), 300);
+
             var query = this.$input.val();
             $.ajax({
                 type: 'POST',
@@ -23,6 +31,9 @@ function ($, _, SubView) {
             })
                 .always(_.bind(function (data) {
                     this.populateResults(data);
+                    this.$results
+                        .removeClass('hidden')
+                        .addClass('visible');
                 }, this));
         },
 
