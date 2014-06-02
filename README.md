@@ -19,10 +19,14 @@ them. For example, click "2" to make "2000", and then "4" to make "2400". Or, to
 get "600", click "0" and then "6". Then click "+" or "-" to add or subtract that
 number from the currently-selected player.
 
+![The number 2400](resources/images/screenshots/2400.png)
+
 It only takes 2 to 4 clicks to manipulate the life points of *any* player
 by *any* amount. That's fast!
 
 Easily reset both life points by clicking the twisty arrow button.
+
+![Twisty arrow button](resources/images/screenshots/reset-button.png)
 
 Expression Evaluation
 ---------------------
@@ -32,9 +36,11 @@ difference between their attack points and yours? Avoid silly arithmetic
 mistakes with Yugioh Calculator's expression evaluation: Add or substract a
 bunch of numbers *before* applying the difference to someone's life.
 
-By clicking the `>_` button, the button will change color and you will enter
+By clicking the ">\_" button, the button will change color and you will enter
 "expression evaluation mode". By clicking numbers, "+" and "-", you will build
-an expression. Click the `>_` button again to get the result of that expression.
+an expression. Click the ">\_" button again to get the result of that expression.
+
+![The expression 2800 - 1950](resources/images/screenshots/2800-1950.png)
 
 Duel Timer
 ----------
@@ -42,6 +48,8 @@ Duel Timer
 Any competitive duelist knows the importance of sanctioned rounds' 40-minute
 time limit. Stay ahead of your opponent by *always* knowing how much time is
 left in the match.
+
+![Duel timer at 39 minutes and 48 seconds](resources/images/screenshots/timer.png)
 
 Easily reset it by clicking the clock button.
 
@@ -52,12 +60,16 @@ Subtracted the wrong number of life points? Undo. Accidentally reset the game?
 Or the timer? Undo. Undo buttons make life better. And Yugioh Calculator is the
 *only* calculator which has one.
 
+![Undo button](resources/images/screenshots/undo-button.png)
+
 History
 -------
 
 Everything you do in Yugioh Calculator is logged, from life point modifications
 to coin flips. Never lose an argument over the current state of life points by
 examining Yugioh Calculator's detailed duel history.
+
+![List of history items including life point changes and duel and timer resets](resources/images/screenshots/history.png)
 
 Rulings
 -------
@@ -66,12 +78,24 @@ Get rulings for any card through Yugioh Calculator's conveniently-accessible
 ruling lookup page; never waste time trudging through Google to figure out how
 your cards work.
 
+![Rulings search field and search results for the card Forbidden Lance](resources/images/screenshots/rulings.png)
+
 Notes
 -----
 
 Pen and paper are *no more* with Yugioh Calculator's notepad. Keep track of
 whether you've used Spore's or Zephyros' effect. Clear it with a single click at
 the start of your next duel.
+
+![Notepad with notes on cards that were activated in a duel](resources/images/screenshots/notes.png)
+
+Dice and Coins
+--------------
+
+These items are also one less thing you need to carry around. Die rolls and coin
+flips also happen instantly.
+
+![Dice and coin buttons and the results "3" and "tails" respectively](resources/images/screenshots/random.png)
 
 Cross-Platform
 --------------
