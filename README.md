@@ -8,6 +8,10 @@ Yugioh Calculator is a cross-platform application that solves all the typical
 problems Yu-Gi-Oh! players face, with dead-simple controls so you can spend more
 time dueling.
 
+Available for free at
+[www.yugiohcalculator.com](http://www.yugiohcalculator.com/). Bookmark it on
+your mobile device today!
+
 Intuitive Life Point Manipulation
 ---------------------------------
 
@@ -42,6 +46,8 @@ an expression. Click the ">\_" button again to get the result of that expression
 
 ![The expression 2800 - 1950](resources/images/screenshots/2800-1950.png)
 
+![Expression button](resources/images/screenshots/expression-button.png)
+
 Duel Timer
 ----------
 
@@ -52,6 +58,8 @@ left in the match.
 ![Duel timer at 39 minutes and 48 seconds](resources/images/screenshots/timer.png)
 
 Easily reset it by clicking the clock button.
+
+![Clock button](resources/images/screenshots/timer-button.png)
 
 An Undo Button
 --------------
@@ -101,7 +109,8 @@ Cross-Platform
 --------------
 
 Yugioh Calculator works on iPhone, iPad, Android, Windows Phone... you name it!
-In fact, Yugioh Calculator even works on devices that *don't exist yet*.
+In fact, Yugioh Calculator even works on devices that *don't exist yet*. That's
+the beauty of a web application.
 
 No Ads!
 -------
@@ -115,9 +124,12 @@ For Developers
 Yugioh Calculator is an open-source project. If you know CSS or JavaScript and
 want to improve this app, then by all means, fork away.
 
-To test locally, install [Grunt](http://gruntjs.com/getting-started) and run:
+To test locally, install Node.js, Bower and Grunt, and run the following from the
+project root:
 
 ```bash
+npm install
+bower install
 grunt serve
 ```
 
@@ -127,4 +139,12 @@ To build, run:
 
 ```bash
 grunt build
+```
+
+Run either of the following to test your build in the browser:
+
+```bash
+grunt serve:dist
+# Or...
+npm start
 ```
