@@ -15,6 +15,12 @@ Random
 History now becomes a list of deltas, which when applied in reverse will undo
 life point actions. DONE
 
+Equals sign for the expression evaluator.
+
+Fix overflowing text.
+
+Add keyboard shortcuts.
+
 New features
 ============
 
