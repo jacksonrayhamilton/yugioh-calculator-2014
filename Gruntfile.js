@@ -145,16 +145,6 @@ module.exports = function (grunt) {
                     ]
                 }]
             },
-            // Removes files that were inlined by grunt-inline.
-            inline: {
-                files: [{
-                    src: [
-                        '<%= config.dist %>/scripts',
-                        '<%= config.dist %>/styles',
-                        '<%= config.dist %>/*favicon.ico'
-                    ]
-                }]
-            },
             server: '.tmp'
         },
 
@@ -385,20 +375,6 @@ module.exports = function (grunt) {
             ]
         },
 
-        inline: {
-            dist: {
-                options: {
-                    tag: ''
-                },
-                src: [
-                    '<%= config.dist %>/index.html'
-                ],
-                dest: [
-                    '<%= config.dist %>/'
-                ]
-            }
-        },
-
         'string-replace': {
             dist: {
                 files: {
@@ -491,9 +467,7 @@ module.exports = function (grunt) {
         'copy:dist',
         'rev',
         'usemin',
-        'inline',
-        'htmlmin',
-        'clean:inline'
+        'htmlmin'
     ]);
 
     grunt.registerTask('default', [
