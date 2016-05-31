@@ -7,7 +7,7 @@ define(function () {
     var Analytics = {};
 
     Analytics.queue = function () {
-        if (location.host !== 'yugiohcalculator.com') {
+        if (location.host !== 'www.yugiohcalculator.com') {
             console.log.apply(console, ['Queued:'].concat(Array.prototype.slice.call(arguments)));
             return;
         }
