@@ -1,5 +1,5 @@
-define(['jquery', 'underscore', 'SubView'],
-function ($, _, SubView) {
+define(['jquery', 'underscore', 'SubView', 'Analytics'],
+function ($, _, SubView, Analytics) {
 
     'use strict';
 
@@ -12,6 +12,8 @@ function ($, _, SubView) {
         },
 
         submitRulingQuery: function () {
+            Analytics.event('Ruling', 'Submit Ruling Query');
+
             this.$results
                 .removeClass('visible')
                 .addClass('hidden');

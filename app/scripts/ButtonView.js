@@ -1,5 +1,5 @@
-define(['jquery', 'backbone'],
-function ($, Backbone) {
+define(['jquery', 'backbone', './Analytics'],
+function ($, Backbone, Analytics) {
 
     'use strict';
 
@@ -37,12 +37,15 @@ function ($, Backbone) {
             'click .yc-window-button': 'windowButtonHandler',
             // 'click #donate': 'subViewButtonHandler',
             'click .yc-restart-timer': function () {
+                Analytics.event('Action', 'Restart Timer');
                 this.timer.restart();
             },
             'click .yc-reset-life-points': function () {
+                Analytics.event('Action', 'Reset Life Points');
                 this.players.resetLifePoints();
             },
             'click .yc-undo': function () {
+                Analytics.event('Action', 'Undo');
                 this.undos.undo();
             },
             'click .yc-digit': function (event) {
@@ -59,6 +62,7 @@ function ($, Backbone) {
             },
             'click .yc-expression-evaluation': function () {
                 if (this.app.get('expressionEvaluationMode')) {
+                    Analytics.event('Action', 'Evaluate Expression');
                     this.expression.evaluate();
                     this.app.set('expressionEvaluationMode', false);
                 } else {
@@ -69,6 +73,7 @@ function ($, Backbone) {
                 if (this.app.get('expressionEvaluationMode')) {
                     this.expression.insertOperator('+');
                 } else {
+                    Analytics.event('Action', 'Add');
                     this.expression.enterValue('+');
                 }
             },
@@ -76,6 +81,7 @@ function ($, Backbone) {
                 if (this.app.get('expressionEvaluationMode')) {
                     this.expression.insertOperator('-');
                 } else {
+                    Analytics.event('Action', 'Subtract');
                     this.expression.enterValue('-');
                 }
             }

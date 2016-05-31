@@ -1,5 +1,5 @@
-define(['SubView', 'Random'],
-function (SubView, Random) {
+define(['SubView', 'Random', 'Analytics'],
+function (SubView, Random, Analytics) {
 
     'use strict';
 
@@ -43,9 +43,11 @@ function (SubView, Random) {
 
         events: {
             'click .yc-roll': function() {
+                Analytics.event('Random', 'Roll Die');
                 this.model.roll();
             },
             'click .yc-flip': function() {
+                Analytics.event('Random', 'Flip Coin');
                 this.model.flip();
             }
         },

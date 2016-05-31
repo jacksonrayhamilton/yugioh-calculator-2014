@@ -1,5 +1,5 @@
-define(['jquery', 'backbone'],
-function ($, Backbone) {
+define(['jquery', 'backbone', './Analytics'],
+function ($, Backbone, Analytics) {
 
     'use strict';
 
@@ -16,6 +16,8 @@ function ($, Backbone) {
         },
 
         show: function (subView) {
+            var subViewCaps = subView.substring(0, 1).toUpperCase() + subView.substring(1);
+            Analytics.event(subViewCaps, 'Show ' + subViewCaps);
             var theSubView = this.subViews[subView];
             theSubView.show();
             this.model.set('visibleSubView', subView);

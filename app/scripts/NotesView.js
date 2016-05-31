@@ -1,5 +1,5 @@
-define(['./SubView'],
-function (SubView) {
+define(['./SubView', './Analytics'],
+function (SubView, Analytics) {
 
     'use strict';
 
@@ -12,10 +12,14 @@ function (SubView) {
         },
 
         events: {
+            'blur .yc-notes': function () {
+                Analytics.event('Notes', 'Wrote Notes');
+            },
             'keyup .yc-notes': function () {
                 this.model.set('content', this.$content.val());
             },
             'click .yc-notes-clear-button': function () {
+                Analytics.event('Notes', 'Cleared Notes');
                 this.model.clear();
             }
         },

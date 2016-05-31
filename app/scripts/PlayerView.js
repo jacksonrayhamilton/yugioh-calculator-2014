@@ -1,5 +1,5 @@
-define(['backbone'],
-function (Backbone) {
+define(['backbone', './Analytics'],
+function (Backbone, Analytics) {
 
     'use strict';
 
@@ -39,6 +39,7 @@ function (Backbone) {
 
         events: {
             click: function () {
+                Analytics.event('Player', 'Select Player');
                 this.model.select();
             }
         }
