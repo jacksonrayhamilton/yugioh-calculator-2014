@@ -9,8 +9,13 @@ problems Yu-Gi-Oh! players face, with dead-simple controls so you can spend more
 time dueling.
 
 Available for free at
-[www.yugiohcalculator.com](http://www.yugiohcalculator.com/). Bookmark it on
+[yugiohcalculator.herokuapp.com](http://yugiohcalculator.herokuapp.com/). Bookmark it on
 your mobile device today!
+
+(Worth mentioning: This repository hosts the old version of Yugioh Calculator.
+I've released a newer, simpler version of the app
+at [www.yugiohcalculator.com](https://www.yugiohcalculator.com/). Source code
+coming soon!!)
 
 Intuitive Life Point Manipulation
 ---------------------------------
