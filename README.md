@@ -1,5 +1,5 @@
-Yugioh Calculator
-=================
+Yugioh Calculator 2014
+======================
 
 Not *just* your typical calculator app: The easiest-to-use, most-intuitive and
 powerful calculator ever made for Yu-Gi-Oh! players!
@@ -12,10 +12,10 @@ Available for free at
 [yugiohcalculator.herokuapp.com](http://yugiohcalculator.herokuapp.com/). Bookmark it on
 your mobile device today!
 
-(Worth mentioning: This repository hosts the old version of Yugioh Calculator.
-I've released a newer, simpler version of the app
-at [www.yugiohcalculator.com](https://www.yugiohcalculator.com/). Source code
-coming soon!!)
+This repository hosts the old (2014-2016) version of Yugioh Calculator.  I've
+released a newer, simpler version of the
+app [here](https://github.com/jacksonrayhamilton/yugioh-calculator-2016) (and
+at [www.yugiohcalculator.com](https://www.yugiohcalculator.com/)).
 
 Intuitive Life Point Manipulation
 ---------------------------------
